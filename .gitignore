@@ -361,3 +361,23 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.vsconfig
+/Assembly-CSharp-Editor.csproj
+/Assembly-CSharp-firstpass.csproj
+/Assembly-CSharp.csproj
+/Assets/3DGamekit
+/Assets/DogKnight
+/Assets/New Terrain.asset
+/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow
+/Library
+/My project.sln
+/NavMeshComponents.csproj
+/NavMeshComponentsEditor.csproj
+/PackageManagerCheck.csproj
+/ProjectSettings
+/SimpleSFXRuntime.csproj
+/Skybox3DRuntime.csproj
+/Temp
+/UserSettings
+/WorldBuildingRuntime.csproj
+/Assets/Plugins/protobuf
