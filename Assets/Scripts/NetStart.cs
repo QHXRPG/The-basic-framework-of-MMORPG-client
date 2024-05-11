@@ -25,17 +25,37 @@ public class NetStart : MonoBehaviour
     {
         NetClient.ConnectToServer(host, port);
 
-
+        MessageRouter.Instance.Subscribe<GameEnterResponse>(_GameEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
         
         
     }
 
-    //当有角色进入地图时候的通知（肯定不是自己）
+    // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
+    private void _GameEnterResponse(Connection conn, GameEnterResponse msg)
+    {
+        Debug.Log("加入游戏的响应结果："+ msg.Success);
+        if(msg.Success)
+        {
+            Debug.Log("角色信息：" + msg.Entity);
+            var e = msg.Entity;
+
+            //为 自己的角色创建实例
+            UnityMainThreadDispatcher.Instance().Enqueue(() =>
+            {
+                //加载预制体
+                var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
+                var hero = Instantiate(prefab);
+                hero.transform.position = new Vector3(e.Position.X, e.Position.Y, e.Position.Z);
+                Debug.Log(e.Direction.X + " " + e.Direction.Y + " " + e.Direction.Z);
+                hero.transform.rotation = Quaternion.Euler(e.Direction.X, e.Direction.Y, e.Direction.Z);
+            });
+        }
+    }
+
+    // 当有角色进入地图时候的通知（这里的 Entity 不是新客户端连接的） 触发多次
     private void _SpaceCharactersEnterResponse(Connection conn, SpaceCharaterEnterResponse msg)
     {
-        //msg.SpaceId;
-        //msg.EntityList
         Debug.Log("角色加入：地图=" + msg.SpaceId + ",entityId=" + msg.EntityList[0].Id);
         var e = msg.EntityList[0];
         
@@ -45,7 +65,6 @@ public class NetStart : MonoBehaviour
             var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
             var hero = Instantiate(prefab);
             hero.transform.position = new Vector3(e.Position.X, e.Position.Y, e.Position.Z);
-            Debug.Log(e.Direction.X + " " + e.Direction.Y + " " + e.Direction.Z);
             hero.transform.rotation = Quaternion.Euler(e.Direction.X, e.Direction.Y, e.Direction.Z);    
         });
     }
@@ -74,7 +93,6 @@ public class NetStart : MonoBehaviour
         }
         GameEnterRequest request = new GameEnterRequest();
         request.CharacterId = 0;
-        Debug.Log("fasong");
         NetClient.Send(request);
     }
 }
