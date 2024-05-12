@@ -32,7 +32,9 @@ public class GameEntity : MonoBehaviour
         this.entityId = nEntity.Id;
         var p = nEntity.Position;
         var d = nEntity.Direction;
-        this.position = new Vector3(p.X * 0.001f, p.Y * 0.001f, p.Z * 0.001f);
-        this.direction = new Vector3(d.X * 0.001f, d.Y * 0.001f, d.Z * 0.001f);
+        this.position = new Vector3(p.X, p.Y , p.Z );
+        this.direction = new Vector3(d.X, d.Y , d.Z );
+        position *= 0.001f;
+        direction *= 0.001f;
     }
 }

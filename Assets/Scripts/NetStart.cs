@@ -61,10 +61,13 @@ public class NetStart : MonoBehaviour
                 //加载预制体
                 var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
                 var hero = Instantiate(prefab);
+                hero.name = "Player-You";
+
+                // 把网络端的数据设置为客户端的数据
                 GameEntity gameEntity = hero.GetComponent<GameEntity>();
                 if(gameEntity != null)
                 {
-                    gameEntity.SetData(e); // 把网络端的数据设置为客户端的数据
+                    gameEntity.SetData(e); 
                 }
 
                 // 开启协程， 每秒10次, 向服务器上传hero的属性（位置、方向等）
@@ -77,15 +80,18 @@ public class NetStart : MonoBehaviour
     private void _SpaceCharactersEnterResponse(Connection conn, SpaceCharaterEnterResponse msg)
     {
         Debug.Log("角色加入：地图=" + msg.SpaceId + ",entityId=" + msg.EntityList[0].Id);
-        var e = msg.EntityList[0];
-        
+        var e = msg.EntityList[0];  // 取出一个 Entity
+
         UnityMainThreadDispatcher.Instance().Enqueue(() =>
         {
             //加载预制体
             var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
             var hero = Instantiate(prefab);
-            hero.transform.position = new Vector3(e.Position.X, e.Position.Y, e.Position.Z);
-            hero.transform.rotation = Quaternion.Euler(e.Direction.X, e.Direction.Y, e.Direction.Z);    
+            hero.name = "Player" + e.Id;
+
+            // 把网络端的数据设置为客户端的数据
+            GameEntity gameEntity = hero.GetComponent<GameEntity>();
+            gameEntity.SetData(e); 
         });
     }
       
