@@ -22,17 +22,27 @@ public class GameEntity : MonoBehaviour
         StartCoroutine(SyncRequest());
     }
 
+    // 设置为全局的，避免在每次调用时候都需要new出来，减少堆区压力
+    SpaceEntitySyncRequest request = new SpaceEntitySyncRequest()
+    {
+        EntitySync = new NEntitySync()
+        {
+            Entity = new NEntity()
+            { 
+                Position = new NVector3(), 
+                Direction = new NVector3()
+            }
+        }
+    };
     // 向服务器发送同步请求
     IEnumerator SyncRequest()
     {
         while (true)
         {
-            SpaceEntitySyncRequest request = new SpaceEntitySyncRequest();
-            request.EntitySync = new NEntitySync();
-            request.EntitySync.Entity = new NEntity();
-            request.EntitySync.Entity.Position = ToNVector3(this.position);
-            request.EntitySync.Entity.Direction = ToNVector3(this.direction);
             request.EntitySync.Entity.Id = entityId;
+            SetValue(this.position * 1000, request.EntitySync.Entity.Position);
+            SetValue(this.direction * 1000, request.EntitySync.Entity.Direction);
+
             Debug.Log(request);
             NetClient.Send(request);
 
@@ -84,5 +94,14 @@ public class GameEntity : MonoBehaviour
     private Vector3 ToVector3(NVector3 v)
     {
         return new Vector3() { x = v.X, y = v.Y, z = v.Z } * 0.001f;
+    }
+
+
+    // 将Unity的三维向量*1000  转为int网络类，再发给服务端(不需要new对象了，减少了堆区开销)
+    private void SetValue(Vector3 a, NVector3 b)
+    {
+        b.X = (int)a.x;
+        b.Y = (int)a.y;
+        b.Z = (int)a.z;
     }
 }

@@ -28,11 +28,20 @@ public class NetStart : MonoBehaviour
 
         MessageRouter.Instance.Subscribe<GameEnterResponse>(_GameEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
-
-
+        MessageRouter.Instance.Subscribe<SpaceEntitySyncResponse>(_SpaceEntitySyncResponse);
     }
 
-
+    // 收到角色的同步信息, 别人移动了，然后通过服务器把这个信息传给我们
+    private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
+    {
+        int entityId = msg.EntitySync.Entity.Id;               // 拿到对方 Entity 的 id
+        GameObject co = GameObject.Find("Player-" + entityId); // 通过这个 id 找到对方的预制体
+        if(co != null)
+        {
+            // 拿到对方预制体的 GameEntity，通过 GameEntity.SetData 更新 当前客户端他的信息
+            co.GetComponent<GameEntity>().SetData(msg.EntitySync.Entity);
+        }
+    }
 
     // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
     private void _GameEnterResponse(Connection conn, GameEnterResponse msg)
@@ -78,7 +87,7 @@ public class NetStart : MonoBehaviour
             //加载预制体
             var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
             var hero = Instantiate(prefab);
-            hero.name = "Player" + e.Id;
+            hero.name = "Player-" + e.Id;
             hero.GetComponent<GameEntity>().isMine = false; // 标明这是其他人的角色
 
             // 把网络端的数据设置为客户端的数据
