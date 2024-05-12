@@ -32,16 +32,7 @@ public class NetStart : MonoBehaviour
 
     }
 
-    // 向服务器发送同步请求
-    IEnumerator SyncRequest()
-    {
-        while(true)
-        {
-            SpaceEntitySyncRequest request = new SpaceEntitySyncRequest();
 
-            yield return new WaitForSeconds(0.1f); // 等待0.1秒
-        }
-    }
 
     // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
     private void _GameEnterResponse(Connection conn, GameEnterResponse msg)
@@ -71,8 +62,7 @@ public class NetStart : MonoBehaviour
                     gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
                 }
 
-                // 开启协程， 每秒10次, 向服务器上传hero的属性（位置、方向等）
-                StartCoroutine(SyncRequest());
+
             });
         }
     }
