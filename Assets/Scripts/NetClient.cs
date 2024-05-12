@@ -54,5 +54,4 @@ public class NetClient
     {
         try { conn?.Close(); } catch { }
     }
-
 }

@@ -62,12 +62,13 @@ public class NetStart : MonoBehaviour
                 var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
                 var hero = Instantiate(prefab);
                 hero.name = "Player-You";
+                hero.GetComponent<GameEntity>().isMine = true; // 标明这是自己的角色
 
                 // 把网络端的数据设置为客户端的数据
                 GameEntity gameEntity = hero.GetComponent<GameEntity>();
-                if(gameEntity != null)
+                if (gameEntity != null)
                 {
-                    gameEntity.SetData(e); 
+                    gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
                 }
 
                 // 开启协程， 每秒10次, 向服务器上传hero的属性（位置、方向等）
@@ -88,10 +89,14 @@ public class NetStart : MonoBehaviour
             var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
             var hero = Instantiate(prefab);
             hero.name = "Player" + e.Id;
+            hero.GetComponent<GameEntity>().isMine = false; // 标明这是其他人的角色
 
             // 把网络端的数据设置为客户端的数据
             GameEntity gameEntity = hero.GetComponent<GameEntity>();
-            gameEntity.SetData(e); 
+            if (gameEntity != null)
+            {
+                gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine);
+            }
         });
     }
       

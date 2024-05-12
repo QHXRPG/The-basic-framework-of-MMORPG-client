@@ -12,6 +12,7 @@ public class GameEntity : MonoBehaviour
     public int entityId;
     public Vector3 position;
     public Vector3 direction;
+    public bool isMine;   // 是否是自己控制的角色
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +23,24 @@ public class GameEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(position.x, position.y, position.z);
-        this.transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+        if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性
+        {
+            this.transform.position = new Vector3(position.x, position.y, position.z);
+            this.transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+        }
+        else
+        {
+            // 玩家控制的角色，实时将玩家控制的角色的属性传给服务器
+            this.position = transform.position;
+            var q = transform.rotation;
+            this.direction = new Vector3(q.x, q.y, q.z);
+
+            // 发送同步消息给服务器
+        }
     }
 
     // 把网络端的数据设置为客户端的数据
-    public void SetData(NEntity nEntity)
+    public void SetData(NEntity nEntity, bool isMine = false)
     {
         this.entityId = nEntity.Id;
         var p = nEntity.Position;
@@ -36,5 +49,10 @@ public class GameEntity : MonoBehaviour
         this.direction = new Vector3(d.X, d.Y , d.Z );
         position *= 0.001f;
         direction *= 0.001f;
+        if (isMine) 
+        {
+            this.transform.position = position;
+            this.transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+        }
     }
 }
