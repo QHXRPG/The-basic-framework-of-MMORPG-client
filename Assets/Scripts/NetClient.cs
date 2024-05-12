@@ -49,4 +49,10 @@ public class NetClient
         Debug.Log("与服务器断开");
     }
 
+    // 关闭网络客户端
+    public static void Close()
+    {
+        try { conn?.Close(); } catch { }
+    }
+
 }

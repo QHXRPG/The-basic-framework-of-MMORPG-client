@@ -121,4 +121,10 @@ public class NetStart : MonoBehaviour
         request.CharacterId = 0;
         NetClient.Send(request);
     }
+
+    private void OnApplicationQuit()
+    {
+        NetClient.Close();
+    }
+
 }
