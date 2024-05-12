@@ -7,6 +7,7 @@ using Summer.Network;
 using Proto.Message;
 using System;
 using UnityEngine.UIElements;
+using System.Runtime.InteropServices;
 
 public class NetStart : MonoBehaviour
 {
@@ -27,8 +28,19 @@ public class NetStart : MonoBehaviour
 
         MessageRouter.Instance.Subscribe<GameEnterResponse>(_GameEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
-        
-        
+
+
+    }
+
+    // 向服务器发送同步请求
+    IEnumerator SyncRequest()
+    {
+        while(true)
+        {
+            SpaceEntitySyncRequest request = new SpaceEntitySyncRequest();
+
+            yield return new WaitForSeconds(0.1f); // 等待0.1秒
+        }
     }
 
     // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
@@ -43,12 +55,20 @@ public class NetStart : MonoBehaviour
             //为 自己的角色创建实例
             UnityMainThreadDispatcher.Instance().Enqueue(() =>
             {
+                // 找到加入游戏的按钮并隐藏(一个玩家只能创建一个角色在同一个客户端)
+                GameObject.Find("Button (EnterGame)")?.SetActive(false);
+
                 //加载预制体
                 var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
                 var hero = Instantiate(prefab);
-                hero.transform.position = new Vector3(e.Position.X, e.Position.Y, e.Position.Z);
-                Debug.Log(e.Direction.X + " " + e.Direction.Y + " " + e.Direction.Z);
-                hero.transform.rotation = Quaternion.Euler(e.Direction.X, e.Direction.Y, e.Direction.Z);
+                GameEntity gameEntity = hero.GetComponent<GameEntity>();
+                if(gameEntity != null)
+                {
+                    gameEntity.SetData(e); // 把网络端的数据设置为客户端的数据
+                }
+
+                // 开启协程， 每秒10次, 向服务器上传hero的属性（位置、方向等）
+                StartCoroutine(SyncRequest());
             });
         }
     }
@@ -87,7 +107,7 @@ public class NetStart : MonoBehaviour
     /// </summary>
     public void EnterGame()
     {
-        if(hero != null)
+        if(hero != null) // hero已经创建，不会发送请求
         {
             return;
         }
