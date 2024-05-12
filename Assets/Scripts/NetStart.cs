@@ -8,6 +8,7 @@ using Proto.Message;
 using System;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices;
+using UnityEditor.PackageManager.Requests;
 
 public class NetStart : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class NetStart : MonoBehaviour
     [Header("登录参数")]
     public InputField usernameInput;
     public InputField passwordInput;
+    public Text PingText;
 
     private GameObject hero; //当前的角色
 
@@ -29,7 +31,40 @@ public class NetStart : MonoBehaviour
         MessageRouter.Instance.Subscribe<GameEnterResponse>(_GameEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceEntitySyncResponse>(_SpaceEntitySyncResponse);
+        MessageRouter.Instance.Subscribe<HeartBeatResponse>(_HeartBeatResponse);
+
+        // 心跳包任务，每秒一次
+        StartCoroutine(SendHeartMessage());
     }
+
+    // 来自服务器的心跳响应
+    private void _HeartBeatResponse(Connection sender, HeartBeatResponse msg)
+    {
+        Debug.Log("来自服务器的心跳响应");
+        var ms = DateTime.Now - lastBeatTime; // 计算延迟
+
+        //主线程是唯一能够访问和修改Unity场景、游戏对象以及调用Unity API的线程。
+        UnityMainThreadDispatcher.Instance().Enqueue(() =>
+        {
+            PingText.text = ms.TotalMinutes.ToString();
+        });
+
+    }
+
+
+    private HeartBeatRequest beatRequest = new HeartBeatRequest();
+    DateTime lastBeatTime = DateTime.MinValue;  
+    // 向服务器发送心跳
+    IEnumerator SendHeartMessage()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f); // 等待1秒
+            NetClient.Send(beatRequest);
+            lastBeatTime = DateTime.Now; // 记录发送时间
+        }
+    }
+
 
     // 收到角色的同步信息, 别人移动了，然后通过服务器把这个信息传给我们
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
@@ -70,8 +105,6 @@ public class NetStart : MonoBehaviour
                 {
                     gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
                 }
-
-
             });
         }
     }
