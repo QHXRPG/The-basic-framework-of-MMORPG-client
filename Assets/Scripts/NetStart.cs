@@ -8,7 +8,7 @@ using Proto.Message;
 using System;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices;
-using UnityEditor.PackageManager.Requests;
+
 
 public class NetStart : MonoBehaviour
 {
@@ -32,13 +32,28 @@ public class NetStart : MonoBehaviour
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceEntitySyncResponse>(_SpaceEntitySyncResponse);
         MessageRouter.Instance.Subscribe<HeartBeatResponse>(_HeartBeatResponse);
+        MessageRouter.Instance.Subscribe<SpaceCharaterLeaveResponse>(_SpaceCharaterLeaveResponse);
 
         // 心跳包任务，每秒一次
         StartCoroutine(SendHeartMessage());
     }
 
+
+    //有角色离开地图
+    private void _SpaceCharaterLeaveResponse(Connection conn, SpaceCharaterLeaveResponse msg)
+    {
+        UnityMainThreadDispatcher.Instance().Enqueue(() =>
+        {
+            GameObject co = GameObject.Find("Player-" + msg.EntityId);
+            if(co != null)
+            {
+                Destroy(co);  // 在当前客户端把这个角色删除
+            }
+        });
+    }
+
     // 来自服务器的心跳响应
-    private void _HeartBeatResponse(Connection sender, HeartBeatResponse msg)
+    private void _HeartBeatResponse(Connection conn, HeartBeatResponse msg)
     {
         var t = DateTime.Now - lastBeatTime; // 计算延迟
 
