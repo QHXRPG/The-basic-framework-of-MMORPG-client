@@ -382,3 +382,7 @@ FodyWeavers.xsd
 /WorldBuildingRuntime.csproj
 /Assets/Plugins/protobuf
 /发布
+/Assets/Texture
+/Assets/Simple Fantasy GUI
+/Assets/Resources/Prefabs/UI
+/Assets/ChibiDialog
