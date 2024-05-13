@@ -41,12 +41,17 @@ public class GameEntity : MonoBehaviour
     {
         while (true)
         {
-            request.EntitySync.Entity.Id = entityId;
-            SetValue(this.position * 1000, request.EntitySync.Entity.Position);
-            SetValue(this.direction * 1000, request.EntitySync.Entity.Direction);
+            // 当前客户端只循环向服务端发送自己角色的信息，别人的角色信息由别人的客户端去发送
+            if(isMine && transform.hasChanged) // 是自己的角色，并且发生了位置方向的变化
+            {
+                request.EntitySync.Entity.Id = entityId;
+                SetValue(this.position * 1000, request.EntitySync.Entity.Position);
+                SetValue(this.direction * 1000, request.EntitySync.Entity.Direction);
+                Debug.Log(request);
+                NetClient.Send(request);
+                transform.hasChanged = false;   
+            }
 
-            Debug.Log(request);
-            NetClient.Send(request);
 
             yield return new WaitForSeconds(0.2f); // 等待0.1秒
         }
