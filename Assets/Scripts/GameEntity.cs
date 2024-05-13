@@ -63,8 +63,12 @@ public class GameEntity : MonoBehaviour
         if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性
         {
             // 利用插值解决客户端这边显示别人移动时卡顿的现象
-            this.transform.rotation = Quaternion.Euler(direction);
             this.transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 5f);
+
+            //四元数
+            var targetRotation = Quaternion.Euler(direction);
+            this.transform.rotation = Quaternion.Lerp(transform.rotation, 
+                                                    targetRotation, Time.deltaTime * 10f);
         }
         else
         {

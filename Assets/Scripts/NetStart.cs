@@ -8,10 +8,13 @@ using Proto.Message;
 using System;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 
 public class NetStart : MonoBehaviour
 {
+    public List<GameObject> keepAlive;
+
     [Header("服务器信息")]
     public string host = "127.0.0.1";
     public int port = 32510;
@@ -28,6 +31,12 @@ public class NetStart : MonoBehaviour
     {
         NetClient.ConnectToServer(host, port);
 
+        // 设置不被销毁的对象
+        foreach (GameObject go in keepAlive) 
+        {
+            DontDestroyOnLoad(go);
+        }
+
         MessageRouter.Instance.Subscribe<GameEnterResponse>(_GameEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterEnterResponse>(_SpaceCharactersEnterResponse);
         MessageRouter.Instance.Subscribe<SpaceEntitySyncResponse>(_SpaceEntitySyncResponse);
@@ -36,6 +45,8 @@ public class NetStart : MonoBehaviour
 
         // 心跳包任务，每秒一次
         StartCoroutine(SendHeartMessage());
+
+        SceneManager.LoadScene("LoginScene");
     }
 
 
@@ -113,7 +124,7 @@ public class NetStart : MonoBehaviour
             UnityMainThreadDispatcher.Instance().Enqueue(() =>
             {
                 // 找到加入游戏的按钮并隐藏(一个玩家只能创建一个角色在同一个客户端)
-                GameObject.Find("Button (EnterGame)")?.SetActive(false);
+                GameObject.Find("ButtonEnterGame")?.SetActive(false);
 
                 //加载预制体
                 var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
