@@ -34,6 +34,8 @@ public class GameEntity : MonoBehaviour
             }
         }
     };
+    internal float speed = 2;
+
     // 向服务器发送同步请求
     IEnumerator SyncRequest()
     {

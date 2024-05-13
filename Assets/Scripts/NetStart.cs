@@ -40,13 +40,14 @@ public class NetStart : MonoBehaviour
     // 来自服务器的心跳响应
     private void _HeartBeatResponse(Connection sender, HeartBeatResponse msg)
     {
-        Debug.Log("来自服务器的心跳响应");
-        var ms = DateTime.Now - lastBeatTime; // 计算延迟
+        var t = DateTime.Now - lastBeatTime; // 计算延迟
 
         //主线程是唯一能够访问和修改Unity场景、游戏对象以及调用Unity API的线程。
         UnityMainThreadDispatcher.Instance().Enqueue(() =>
         {
-            PingText.text = ms.TotalMinutes.ToString();
+            int ms = (int)Math.Round(t.TotalMilliseconds);
+            if (ms <= 0) ms = 1;
+            PingText.text = $"Ping:{ms}ms";
         });
 
     }
@@ -105,6 +106,7 @@ public class NetStart : MonoBehaviour
                 {
                     gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
                 }
+                hero.AddComponent<HeroController>();  // 给自己的角色加上英雄控制器
             });
         }
     }
