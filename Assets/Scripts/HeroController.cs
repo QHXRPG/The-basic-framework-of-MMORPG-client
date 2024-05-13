@@ -7,9 +7,9 @@ public class HeroController : MonoBehaviour
 {
     //根据标签player获取英雄对象
     private GameObject hero;
-    
 
-    public float speed = 2; //每秒移动的距离
+    public static float originalSpeed = 2;
+    public float speed = originalSpeed; //每秒移动的距离
 
     //是否调整视角
     public bool AdjustView{get; set;}
@@ -43,7 +43,7 @@ public class HeroController : MonoBehaviour
     {
         camera = Camera.main;
         if (Input.GetKeyDown(KeyCode.Space)) // 空格为攻击动作
-        {
+        { 
             anim.PlayAttack1();
         }
 
@@ -85,12 +85,19 @@ public class HeroController : MonoBehaviour
             anim.PlayRun();
             if (anim.state == HeroAnimations.HState.Run)
             {
+                // 检测玩家按下了左 Shift 键
+                // 如果按下了左 Shift 键，将移动速度调整为原始速度的两倍
+                if (Input.GetKey(KeyCode.LeftShift)) speed = originalSpeed * 2.0f;
+                else speed = originalSpeed; // 如果没有按下左 Shift 键，恢复到原始的移动速度
+
                 //摇杆控制英雄沿着摄像机的方向移动
                 Vector3 dir = camera.transform.forward * v + camera.transform.right * h;
                 dir.y = 0;
                 dir.Normalize();
                 hero.transform.position += dir * speed * Time.deltaTime;
                 hero.transform.forward = dir;
+                    
+
             }
         }
         else  // 不移动的时候
