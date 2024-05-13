@@ -48,7 +48,7 @@ public class GameEntity : MonoBehaviour
             Debug.Log(request);
             NetClient.Send(request);
 
-            yield return new WaitForSeconds(0.1f); // 等待0.1秒
+            yield return new WaitForSeconds(0.2f); // 等待0.1秒
         }
     }
 
@@ -57,8 +57,9 @@ public class GameEntity : MonoBehaviour
     {
         if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性
         {
-            this.transform.position = new Vector3(position.x, position.y, position.z);
+            // 利用插值解决客户端这边显示别人移动时卡顿的现象
             this.transform.rotation = Quaternion.Euler(direction);
+            this.transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 5f);
         }
         else
         {

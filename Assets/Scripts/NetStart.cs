@@ -150,7 +150,7 @@ public class NetStart : MonoBehaviour
             GameEntity gameEntity = hero.GetComponent<GameEntity>();
             if (gameEntity != null)
             {
-                gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine);
+                gameEntity.SetData(e, true);
             }
         });
     }
