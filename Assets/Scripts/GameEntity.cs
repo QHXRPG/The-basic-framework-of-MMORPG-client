@@ -58,14 +58,13 @@ public class GameEntity : MonoBehaviour
         if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性
         {
             this.transform.position = new Vector3(position.x, position.y, position.z);
-            this.transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+            this.transform.rotation = Quaternion.Euler(direction);
         }
         else
         {
             // 玩家控制的角色，实时将玩家控制的角色的属性传给服务器
             this.position = transform.position;
-            var q = transform.rotation;
-            this.direction = new Vector3(q.x, q.y, q.z);
+            this.direction = transform.rotation.eulerAngles;
         }
     }
 
@@ -80,7 +79,7 @@ public class GameEntity : MonoBehaviour
         if (isMine) 
         {
             this.transform.position = position;
-            this.transform.rotation = Quaternion.Euler(direction.x, direction.y, direction.z);
+            this.transform.rotation = Quaternion.Euler(direction);
         }
     }
 

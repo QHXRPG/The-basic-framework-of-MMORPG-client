@@ -71,12 +71,18 @@ public class NetStart : MonoBehaviour
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
         int entityId = msg.EntitySync.Entity.Id;               // 拿到对方 Entity 的 id
-        GameObject co = GameObject.Find("Player-" + entityId); // 通过这个 id 找到对方的预制体
-        if(co != null)
+
+        // 涉及到游戏对象的获取和访问，必须保证该过程在UI线程（主线程）中进行
+        UnityMainThreadDispatcher.Instance().Enqueue(() =>
         {
-            // 拿到对方预制体的 GameEntity，通过 GameEntity.SetData 更新 当前客户端他的信息
-            co.GetComponent<GameEntity>().SetData(msg.EntitySync.Entity);
-        }
+            GameObject co = GameObject.Find("Player-" + entityId); // 通过这个 id 找到对方的预制体
+            if (co != null)
+            {
+                // 拿到对方预制体的 GameEntity，通过 GameEntity.SetData 更新 当前客户端他的信息
+                co.GetComponent<GameEntity>().SetData(msg.EntitySync.Entity);
+            }
+        });
+
     }
 
     // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
