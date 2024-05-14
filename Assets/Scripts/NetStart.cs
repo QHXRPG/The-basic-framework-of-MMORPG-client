@@ -117,12 +117,16 @@ public class NetStart : MonoBehaviour
         Debug.Log("加入游戏的响应结果："+ msg.Success);
         if(msg.Success)
         {
-            Debug.Log("角色信息：" + msg.Entity);
+            Debug.Log("角色信息：" + msg);
             var e = msg.Entity;
+            var chr = msg.Charater;
 
             //为 自己的角色创建实例
             UnityMainThreadDispatcher.Instance().Enqueue(() =>
             {
+                // 加载新手村
+                SceneManager.LoadScene("Scene1");
+
                 // 找到加入游戏的按钮并隐藏(一个玩家只能创建一个角色在同一个客户端)
                 GameObject.Find("ButtonEnterGame")?.SetActive(false);
 
@@ -139,6 +143,7 @@ public class NetStart : MonoBehaviour
                     gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
                 }
                 hero.AddComponent<HeroController>();  // 给自己的角色加上英雄控制器
+                DontDestroyOnLoad(hero);
             });
         }
     }
@@ -182,14 +187,14 @@ public class NetStart : MonoBehaviour
     /// <summary>
     /// 加入游戏
     /// </summary>
-    public void EnterGame()
+    public void EnterGame(int roleId)
     {
         if(hero != null) // hero已经创建，不会发送请求
         {
             return;
         }
         GameEnterRequest request = new GameEnterRequest();
-        request.CharacterId = 0;
+        request.CharacterId = roleId;
         NetClient.Send(request);
     }
 
