@@ -386,3 +386,9 @@ FodyWeavers.xsd
 /Assets/Simple Fantasy GUI
 /Assets/Resources/Prefabs/UI
 /Assets/ChibiDialog
+/Assets/Environments
+/Assets/Scenes/LoginScene.unity
+/Assets/Scenes/SampleScene.unity
+*.unity
+*.lighting
+/Assets/Scenes/SelectHero.unity
