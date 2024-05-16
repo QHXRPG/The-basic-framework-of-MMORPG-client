@@ -38,35 +38,35 @@ namespace Proto.Message {
             "CgtjaGFyYWN0ZXJJZBgBIAEoBSJ5ChFHYW1lRW50ZXJSZXNwb25zZRIPCgdz",
             "dWNjZXNzGAEgASgIEiYKBmVudGl0eRgCIAEoCzIWLlByb3RvLk1lc3NhZ2Uu",
             "TkVudGl0eRIrCghjaGFyYXRlchgDIAEoCzIZLlByb3RvLk1lc3NhZ2UuTkNo",
-            "YXJhY3RlciJZChpTcGFjZUNoYXJhdGVyRW50ZXJSZXNwb25zZRIPCgdzcGFj",
-            "ZUlkGAEgASgFEioKCmVudGl0eUxpc3QYAiADKAsyFi5Qcm90by5NZXNzYWdl",
-            "Lk5FbnRpdHkiLgoaU3BhY2VDaGFyYXRlckxlYXZlUmVzcG9uc2USEAoIZW50",
-            "aXR5SWQYASABKAUidwoHUmVxdWVzdBI4Cgx1c2VyUmVnaXN0ZXIYASABKAsy",
-            "Ii5Qcm90by5NZXNzYWdlLlVzZXJSZWdpc3RlclJlcXVlc3QSMgoJdXNlckxv",
-            "Z2luGAIgASgLMh8uUHJvdG8uTWVzc2FnZS5Vc2VyTG9naW5SZXF1ZXN0IngK",
-            "CFJlc3BvbnNlEjgKDHVzZXJSZWdpc3RlchgBIAEoCzIiLlByb3RvLk1lc3Nh",
-            "Z2UuVXNlclJlZ2lzdGVyUmVwb25zZRIyCgl1c2VyTG9naW4YAiABKAsyHy5Q",
-            "cm90by5NZXNzYWdlLlVzZXJMb2dpblJlcG9uc2UiOQoTVXNlclJlZ2lzdGVy",
-            "UmVxdWVzdBIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSI0",
-            "ChNVc2VyUmVnaXN0ZXJSZXBvbnNlEgwKBGNvZGUYASABKAUSDwoHbWVzc2Fn",
-            "ZRgCIAEoCSI2ChBVc2VyTG9naW5SZXF1ZXN0EhAKCHVzZXJuYW1lGAEgASgJ",
-            "EhAKCHBhc3N3b3JkGAIgASgJIkIKEFVzZXJMb2dpblJlcG9uc2USDwoHc3Vj",
-            "Y2VzcxgBIAEoCBIMCgRjb2RlGAIgASgFEg8KB21lc3NhZ2UYAyABKAkiNwoW",
-            "Q2hhcmFjdGVyQ3JlYXRlUmVxdWVzdBIMCgRuYW1lGAEgASgJEg8KB0pvYlR5",
-            "cGUYAiABKAUixQEKCk5DaGFyYWN0ZXISCgoCaWQYASABKAUSDwoHdHlwZV9p",
-            "ZBgCIAEoBRIRCgllbnRpdHlfaWQYAyABKAUSDAoEbmFtZRgEIAEoCRINCgVs",
-            "ZXZlbBgFIAEoBRILCgNleHAYBiABKAMSDwoHc3BhY2VJZBgHIAEoBRIMCgRn",
-            "b2xkGAggASgDEiYKBmVudGl0eRgJIAEoCzIWLlByb3RvLk1lc3NhZ2UuTkVu",
-            "dGl0eRIKCgJocBgKIAEoBRIKCgJtcBgLIAEoBSJpChdDaGFyYWN0ZXJDcmVh",
-            "dGVSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkS",
-            "LAoJY2hhcmFjdGVyGAMgASgLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVy",
-            "IhYKFENoYXJhY3Rlckxpc3RSZXF1ZXN0IkkKFUNoYXJhY3Rlckxpc3RSZXNw",
-            "b25zZRIwCg1jaGFyYWN0ZXJMaXN0GAEgAygLMhkuUHJvdG8uTWVzc2FnZS5O",
-            "Q2hhcmFjdGVyIi0KFkNoYXJhY3RlckRlbGV0ZVJlcXVlc3QSEwoLY2hhcmFj",
-            "dGVySWQYASABKAUiOwoXQ2hhcmFjdGVyRGVsZXRlUmVzcG9uc2USDwoHc3Vj",
-            "Y2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJKj8KC0VudGl0eVN0YXRlEggK",
-            "BE5PTkUQABIICgRJRExFEAESCAoETU9WRRACEggKBEpVTVAQAxIICgRSSURF",
-            "EARiBnByb3RvMw=="));
+            "YXJhY3RlciJfChpTcGFjZUNoYXJhdGVyRW50ZXJSZXNwb25zZRIPCgdzcGFj",
+            "ZUlkGAEgASgFEjAKDWNoYXJhY3Rlckxpc3QYAiADKAsyGS5Qcm90by5NZXNz",
+            "YWdlLk5DaGFyYWN0ZXIiLgoaU3BhY2VDaGFyYXRlckxlYXZlUmVzcG9uc2US",
+            "EAoIZW50aXR5SWQYASABKAUidwoHUmVxdWVzdBI4Cgx1c2VyUmVnaXN0ZXIY",
+            "ASABKAsyIi5Qcm90by5NZXNzYWdlLlVzZXJSZWdpc3RlclJlcXVlc3QSMgoJ",
+            "dXNlckxvZ2luGAIgASgLMh8uUHJvdG8uTWVzc2FnZS5Vc2VyTG9naW5SZXF1",
+            "ZXN0IngKCFJlc3BvbnNlEjgKDHVzZXJSZWdpc3RlchgBIAEoCzIiLlByb3Rv",
+            "Lk1lc3NhZ2UuVXNlclJlZ2lzdGVyUmVwb25zZRIyCgl1c2VyTG9naW4YAiAB",
+            "KAsyHy5Qcm90by5NZXNzYWdlLlVzZXJMb2dpblJlcG9uc2UiOQoTVXNlclJl",
+            "Z2lzdGVyUmVxdWVzdBIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgC",
+            "IAEoCSI0ChNVc2VyUmVnaXN0ZXJSZXBvbnNlEgwKBGNvZGUYASABKAUSDwoH",
+            "bWVzc2FnZRgCIAEoCSI2ChBVc2VyTG9naW5SZXF1ZXN0EhAKCHVzZXJuYW1l",
+            "GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIkIKEFVzZXJMb2dpblJlcG9uc2US",
+            "DwoHc3VjY2VzcxgBIAEoCBIMCgRjb2RlGAIgASgFEg8KB21lc3NhZ2UYAyAB",
+            "KAkiNwoWQ2hhcmFjdGVyQ3JlYXRlUmVxdWVzdBIMCgRuYW1lGAEgASgJEg8K",
+            "B0pvYlR5cGUYAiABKAUixQEKCk5DaGFyYWN0ZXISCgoCaWQYASABKAUSDwoH",
+            "dHlwZV9pZBgCIAEoBRIRCgllbnRpdHlfaWQYAyABKAUSDAoEbmFtZRgEIAEo",
+            "CRINCgVsZXZlbBgFIAEoBRILCgNleHAYBiABKAMSDwoHc3BhY2VJZBgHIAEo",
+            "BRIMCgRnb2xkGAggASgDEiYKBmVudGl0eRgJIAEoCzIWLlByb3RvLk1lc3Nh",
+            "Z2UuTkVudGl0eRIKCgJocBgKIAEoBRIKCgJtcBgLIAEoBSJpChdDaGFyYWN0",
+            "ZXJDcmVhdGVSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UY",
+            "AiABKAkSLAoJY2hhcmFjdGVyGAMgASgLMhkuUHJvdG8uTWVzc2FnZS5OQ2hh",
+            "cmFjdGVyIhYKFENoYXJhY3Rlckxpc3RSZXF1ZXN0IkkKFUNoYXJhY3Rlckxp",
+            "c3RSZXNwb25zZRIwCg1jaGFyYWN0ZXJMaXN0GAEgAygLMhkuUHJvdG8uTWVz",
+            "c2FnZS5OQ2hhcmFjdGVyIi0KFkNoYXJhY3RlckRlbGV0ZVJlcXVlc3QSEwoL",
+            "Y2hhcmFjdGVySWQYASABKAUiOwoXQ2hhcmFjdGVyRGVsZXRlUmVzcG9uc2US",
+            "DwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJKj8KC0VudGl0eVN0",
+            "YXRlEggKBE5PTkUQABIICgRJRExFEAESCAoETU9WRRACEggKBEpVTVAQAxII",
+            "CgRSSURFEARiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Proto.Message.EntityState), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -79,7 +79,7 @@ namespace Proto.Message {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceEntitySyncResponse), global::Proto.Message.SpaceEntitySyncResponse.Parser, new[]{ "EntitySync" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.GameEnterRequest), global::Proto.Message.GameEnterRequest.Parser, new[]{ "CharacterId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.GameEnterResponse), global::Proto.Message.GameEnterResponse.Parser, new[]{ "Success", "Entity", "Charater" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceCharaterEnterResponse), global::Proto.Message.SpaceCharaterEnterResponse.Parser, new[]{ "SpaceId", "EntityList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceCharaterEnterResponse), global::Proto.Message.SpaceCharaterEnterResponse.Parser, new[]{ "SpaceId", "CharacterList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceCharaterLeaveResponse), global::Proto.Message.SpaceCharaterLeaveResponse.Parser, new[]{ "EntityId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.Request), global::Proto.Message.Request.Parser, new[]{ "UserRegister", "UserLogin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.Response), global::Proto.Message.Response.Parser, new[]{ "UserRegister", "UserLogin" }, null, null, null, null),
@@ -2101,7 +2101,7 @@ namespace Proto.Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SpaceCharaterEnterResponse(SpaceCharaterEnterResponse other) : this() {
       spaceId_ = other.spaceId_;
-      entityList_ = other.entityList_.Clone();
+      characterList_ = other.characterList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2123,15 +2123,15 @@ namespace Proto.Message {
       }
     }
 
-    /// <summary>Field number for the "entityList" field.</summary>
-    public const int EntityListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Proto.Message.NEntity> _repeated_entityList_codec
-        = pb::FieldCodec.ForMessage(18, global::Proto.Message.NEntity.Parser);
-    private readonly pbc::RepeatedField<global::Proto.Message.NEntity> entityList_ = new pbc::RepeatedField<global::Proto.Message.NEntity>();
+    /// <summary>Field number for the "characterList" field.</summary>
+    public const int CharacterListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Proto.Message.NCharacter> _repeated_characterList_codec
+        = pb::FieldCodec.ForMessage(18, global::Proto.Message.NCharacter.Parser);
+    private readonly pbc::RepeatedField<global::Proto.Message.NCharacter> characterList_ = new pbc::RepeatedField<global::Proto.Message.NCharacter>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::Proto.Message.NEntity> EntityList {
-      get { return entityList_; }
+    public pbc::RepeatedField<global::Proto.Message.NCharacter> CharacterList {
+      get { return characterList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2150,7 +2150,7 @@ namespace Proto.Message {
         return true;
       }
       if (SpaceId != other.SpaceId) return false;
-      if(!entityList_.Equals(other.entityList_)) return false;
+      if(!characterList_.Equals(other.characterList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2159,7 +2159,7 @@ namespace Proto.Message {
     public override int GetHashCode() {
       int hash = 1;
       if (SpaceId != 0) hash ^= SpaceId.GetHashCode();
-      hash ^= entityList_.GetHashCode();
+      hash ^= characterList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2182,7 +2182,7 @@ namespace Proto.Message {
         output.WriteRawTag(8);
         output.WriteInt32(SpaceId);
       }
-      entityList_.WriteTo(output, _repeated_entityList_codec);
+      characterList_.WriteTo(output, _repeated_characterList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2197,7 +2197,7 @@ namespace Proto.Message {
         output.WriteRawTag(8);
         output.WriteInt32(SpaceId);
       }
-      entityList_.WriteTo(ref output, _repeated_entityList_codec);
+      characterList_.WriteTo(ref output, _repeated_characterList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2211,7 +2211,7 @@ namespace Proto.Message {
       if (SpaceId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SpaceId);
       }
-      size += entityList_.CalculateSize(_repeated_entityList_codec);
+      size += characterList_.CalculateSize(_repeated_characterList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2227,7 +2227,7 @@ namespace Proto.Message {
       if (other.SpaceId != 0) {
         SpaceId = other.SpaceId;
       }
-      entityList_.Add(other.entityList_);
+      characterList_.Add(other.characterList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2248,7 +2248,7 @@ namespace Proto.Message {
             break;
           }
           case 18: {
-            entityList_.AddEntriesFrom(input, _repeated_entityList_codec);
+            characterList_.AddEntriesFrom(input, _repeated_characterList_codec);
             break;
           }
         }
@@ -2271,7 +2271,7 @@ namespace Proto.Message {
             break;
           }
           case 18: {
-            entityList_.AddEntriesFrom(ref input, _repeated_entityList_codec);
+            characterList_.AddEntriesFrom(ref input, _repeated_characterList_codec);
             break;
           }
         }

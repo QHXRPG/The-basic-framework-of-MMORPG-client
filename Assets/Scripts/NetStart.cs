@@ -9,6 +9,7 @@ using System;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 
 public class NetStart : MonoBehaviour
@@ -29,6 +30,8 @@ public class NetStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 忽略6号图层之间的碰撞
+        Physics.IgnoreLayerCollision(6, 6, true);
         NetClient.ConnectToServer(host, port);
 
         // 设置不被销毁的对象
@@ -47,8 +50,12 @@ public class NetStart : MonoBehaviour
         StartCoroutine(SendHeartMessage());
 
         SceneManager.LoadScene("LoginScene");
-    }
 
+        DataManager.Instance.Init();
+
+        // 注册当前类中 加入游戏 的事件， 函数为 EnterGame
+        QHXRPG.Event.RegisterIn("EnterGame", this, "EnterGame");
+    }
 
     //有角色离开地图
     private void _SpaceCharaterLeaveResponse(Connection conn, SpaceCharaterLeaveResponse msg)
@@ -97,11 +104,13 @@ public class NetStart : MonoBehaviour
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
         int entityId = msg.EntitySync.Entity.Id;               // 拿到对方 Entity 的 id
+        Debug.Log(msg);
 
         // 涉及到游戏对象的获取和访问，必须保证该过程在UI线程（主线程）中进行
         UnityMainThreadDispatcher.Instance().Enqueue(() =>
         {
             GameObject co = GameObject.Find("Player-" + entityId); // 通过这个 id 找到对方的预制体
+            Debug.Log(co);
             if (co != null)
             {
                 // 拿到对方预制体的 GameEntity，通过 GameEntity.SetData 更新 当前客户端他的信息
@@ -111,7 +120,7 @@ public class NetStart : MonoBehaviour
 
     }
 
-    // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次
+    // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次 本人
     private void _GameEnterResponse(Connection conn, GameEnterResponse msg)
     {
         Debug.Log("加入游戏的响应结果："+ msg.Success);
@@ -124,15 +133,13 @@ public class NetStart : MonoBehaviour
             //为 自己的角色创建实例
             UnityMainThreadDispatcher.Instance().Enqueue(() =>
             {
-                // 加载新手村
-                SceneManager.LoadScene("Scene1");
-
                 // 找到加入游戏的按钮并隐藏(一个玩家只能创建一个角色在同一个客户端)
                 GameObject.Find("ButtonEnterGame")?.SetActive(false);
 
                 //加载预制体
                 var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
                 var hero = Instantiate(prefab);
+                hero.layer = 6; // 将角色加入到6号图层中
                 hero.name = "Player-You";
                 hero.GetComponent<GameEntity>().isMine = true; // 标明这是自己的角色
 
@@ -144,31 +151,21 @@ public class NetStart : MonoBehaviour
                 }
                 hero.AddComponent<HeroController>();  // 给自己的角色加上英雄控制器
                 DontDestroyOnLoad(hero);
+
+                // 加载对应的场景
+                var spaceDefine = DataManager.Instance.Spaces[chr.SpaceId];
+                SceneManager.LoadScene(spaceDefine.Resource);
             });
         }
     }
 
-    // 当有角色进入地图时候的通知（这里的 Entity 不是新客户端连接的） 触发多次
+    // 当有角色进入地图时候的通知（不是当前客户端） 触发多次
     private void _SpaceCharactersEnterResponse(Connection conn, SpaceCharaterEnterResponse msg)
     {
-        Debug.Log("角色加入：地图=" + msg.SpaceId + ",entityId=" + msg.EntityList[0].Id);
-        var e = msg.EntityList[0];  // 取出一个 Entity
+        Debug.Log("角色加入：地图=" + msg.SpaceId + ",entityId=" + msg.CharacterList[0].Id);
+        var character = msg.CharacterList[0];  // 取出一个 Entity
 
-        UnityMainThreadDispatcher.Instance().Enqueue(() =>
-        {
-            //加载预制体
-            var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
-            var hero = Instantiate(prefab);
-            hero.name = "Player-" + e.Id;
-            hero.GetComponent<GameEntity>().isMine = false; // 标明这是其他人的角色
-
-            // 把网络端的数据设置为客户端的数据
-            GameEntity gameEntity = hero.GetComponent<GameEntity>();
-            if (gameEntity != null)
-            {
-                gameEntity.SetData(e, true);
-            }
-        });
+        QHXRPG.Event.FireOut("CharacterEnter", character);
     }
       
 
@@ -176,7 +173,12 @@ public class NetStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        QHXRPG.Event.Tick();
+    }
+
+    private void OnDestroy()
+    {
+        QHXRPG.Event.UnregisterIn("EnterGame", this, "EnterGame");
     }
 
     public void Login()

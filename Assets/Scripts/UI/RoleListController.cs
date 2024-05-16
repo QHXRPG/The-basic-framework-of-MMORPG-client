@@ -136,12 +136,14 @@ public class RoleListController : MonoBehaviour
     }
 
     // 开始游戏
-    public void EnterGame()
+    public void StartGame()
     {
         if (SelectedRoleIndex < 0) return;
         var role = roles[SelectedRoleIndex];
         Debug.Log("开始游戏：" + role.Name);
-        GameObject.Find("NetStart").GetComponent<NetStart>().EnterGame(role.RoleId);
+
+        // 通过事件系统触发 EnterGame 函数
+        QHXRPG.Event.FireIn("EnterGame", role.RoleId);
     }
 
     // 点击选择了角色

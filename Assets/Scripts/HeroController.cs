@@ -8,7 +8,7 @@ public class HeroController : MonoBehaviour
     //根据标签player获取英雄对象
     private GameObject hero;
 
-    public static float originalSpeed = 2;
+    public static float originalSpeed = 4;
     public float speed = originalSpeed; //每秒移动的距离
 
     //是否调整视角
