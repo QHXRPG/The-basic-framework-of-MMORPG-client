@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
+using Assets.Scripts.u3d_scripts;
 
 
 public class NetStart : MonoBehaviour
@@ -60,14 +61,7 @@ public class NetStart : MonoBehaviour
     //有角色离开地图
     private void _SpaceCharaterLeaveResponse(Connection conn, SpaceCharaterLeaveResponse msg)
     {
-        UnityMainThreadDispatcher.Instance().Enqueue(() =>
-        {
-            GameObject co = GameObject.Find("Player-" + msg.EntityId);
-            if(co != null)
-            {
-                Destroy(co);  // 在当前客户端把这个角色删除
-            }
-        });
+        QHXRPG.Event.FireOut("CharacterLeave", msg.EntityId);
     }
 
     // 来自服务器的心跳响应
@@ -100,24 +94,13 @@ public class NetStart : MonoBehaviour
     }
 
 
-    // 收到角色的同步信息, 别人移动了，然后通过服务器把这个信息传给我们
+    // 角色的同步信息, 别人移动了，通过服务器把这个信息传给我们
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
-        int entityId = msg.EntitySync.Entity.Id;               // 拿到对方 Entity 的 id
         Debug.Log(msg);
 
         // 涉及到游戏对象的获取和访问，必须保证该过程在UI线程（主线程）中进行
-        UnityMainThreadDispatcher.Instance().Enqueue(() =>
-        {
-            GameObject co = GameObject.Find("Player-" + entityId); // 通过这个 id 找到对方的预制体
-            Debug.Log(co);
-            if (co != null)
-            {
-                // 拿到对方预制体的 GameEntity，通过 GameEntity.SetData 更新 当前客户端他的信息
-                co.GetComponent<GameEntity>().SetData(msg.EntitySync.Entity);
-            }
-        });
-
+        QHXRPG.Event.FireOut("EntitySync", msg.EntitySync);
     }
 
     // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次 本人
@@ -127,35 +110,11 @@ public class NetStart : MonoBehaviour
         if(msg.Success)
         {
             Debug.Log("角色信息：" + msg);
-            var e = msg.Entity;
             var chr = msg.Charater;
-
-            //为 自己的角色创建实例
-            UnityMainThreadDispatcher.Instance().Enqueue(() =>
-            {
-                // 找到加入游戏的按钮并隐藏(一个玩家只能创建一个角色在同一个客户端)
-                GameObject.Find("ButtonEnterGame")?.SetActive(false);
-
-                //加载预制体
-                var prefab = Resources.Load<GameObject>("Prefabs/DogPBR");
-                var hero = Instantiate(prefab);
-                hero.layer = 6; // 将角色加入到6号图层中
-                hero.name = "Player-You";
-                hero.GetComponent<GameEntity>().isMine = true; // 标明这是自己的角色
-
-                // 把网络端的数据设置为客户端的数据
-                GameEntity gameEntity = hero.GetComponent<GameEntity>();
-                if (gameEntity != null)
-                {
-                    gameEntity.SetData(e, hero.GetComponent<GameEntity>().isMine); 
-                }
-                hero.AddComponent<HeroController>();  // 给自己的角色加上英雄控制器
-                DontDestroyOnLoad(hero);
-
-                // 加载对应的场景
-                var spaceDefine = DataManager.Instance.Spaces[chr.SpaceId];
-                SceneManager.LoadScene(spaceDefine.Resource);
-            });
+            chr.Entity = msg.Entity;
+            GameApp.CharacterId = chr.Id; // 记录全局游戏的id
+            QHXRPG.Event.FireOut("CharacterEnter", chr); // 调用进入游戏的方法
+            GameApp.LoadSpace(msg.Charater.SpaceId);  // 进入场景
         }
     }
 
