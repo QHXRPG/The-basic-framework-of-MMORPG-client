@@ -16,9 +16,16 @@ public class GameEntity : MonoBehaviour
     public bool isMine;   // 是否是自己控制的角色
     public string entityName = "QHXRPG";
 
+    private CharacterController characterController;  // 角色控制器
+
+    private float fallSpeed = 0f;  // 下落速度
+    private float fallSpeedMax = 30f;  // 最大下落速度
+
     // Start is called before the first frame update
     void Start()
     {
+        characterController = GetComponent<CharacterController>();  
+
         // 开启协程， 每秒10次, 向服务器上传hero的属性（位置、方向等）
         StartCoroutine(SyncRequest());
     }
@@ -100,6 +107,23 @@ public class GameEntity : MonoBehaviour
             // 玩家控制的角色，实时将玩家控制的角色的属性传给服务器
             this.position = transform.position;
             this.direction = transform.rotation.eulerAngles;
+        }
+
+        // 模拟重力
+        if(!characterController.isGrounded)
+        {
+            //计算重力增量
+            fallSpeed += 9.8f * Time.deltaTime; // 计算下落速度
+            if(fallSpeed >fallSpeedMax)
+            {  fallSpeedMax = fallSpeed; }
+
+            // 模拟重力下坠
+            characterController.Move(new Vector3 (0, -fallSpeed* Time.deltaTime, 0));    
+        }
+        else
+        {
+            characterController.Move(new Vector3(0, -0.01f, 0));
+            fallSpeed = 0f; // 下落速度归零
         }
     }
 

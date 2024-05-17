@@ -94,9 +94,8 @@ public class HeroController : MonoBehaviour
                 Vector3 dir = camera.transform.forward * v + camera.transform.right * h;
                 dir.y = 0;
                 dir.Normalize();
-                hero.transform.position += dir * speed * Time.deltaTime;
                 hero.transform.forward = dir;
-                    
+                characterController.Move(dir * speed * Time.deltaTime);
 
             }
         }
