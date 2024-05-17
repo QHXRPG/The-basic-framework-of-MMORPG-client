@@ -29,44 +29,45 @@ namespace Proto.Message {
             "IAEoBRIJCgF5GAIgASgFEgkKAXoYAyABKAUiewoHTkVudGl0eRIKCgJpZBgB",
             "IAEoBRIpCghwb3NpdGlvbhgDIAEoCzIXLlByb3RvLk1lc3NhZ2UuTlZlY3Rv",
             "cjMSKgoJZGlyZWN0aW9uGAQgASgLMhcuUHJvdG8uTWVzc2FnZS5OVmVjdG9y",
-            "MxINCgVTcGVlZBgFIAEoBSJgCgtORW50aXR5U3luYxImCgZlbnRpdHkYASAB",
+            "MxINCgVTcGVlZBgFIAEoBSJvCgtORW50aXR5U3luYxImCgZlbnRpdHkYASAB",
             "KAsyFi5Qcm90by5NZXNzYWdlLk5FbnRpdHkSKQoFc3RhdGUYBCABKA4yGi5Q",
-            "cm90by5NZXNzYWdlLkVudGl0eVN0YXRlIkgKFlNwYWNlRW50aXR5U3luY1Jl",
-            "cXVlc3QSLgoKZW50aXR5U3luYxgBIAEoCzIaLlByb3RvLk1lc3NhZ2UuTkVu",
-            "dGl0eVN5bmMiSQoXU3BhY2VFbnRpdHlTeW5jUmVzcG9uc2USLgoKZW50aXR5",
-            "U3luYxgBIAEoCzIaLlByb3RvLk1lc3NhZ2UuTkVudGl0eVN5bmMiJwoQR2Ft",
-            "ZUVudGVyUmVxdWVzdBITCgtjaGFyYWN0ZXJJZBgBIAEoBSJ5ChFHYW1lRW50",
-            "ZXJSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEiYKBmVudGl0eRgCIAEoCzIW",
-            "LlByb3RvLk1lc3NhZ2UuTkVudGl0eRIrCghjaGFyYXRlchgDIAEoCzIZLlBy",
-            "b3RvLk1lc3NhZ2UuTkNoYXJhY3RlciJfChpTcGFjZUNoYXJhdGVyRW50ZXJS",
-            "ZXNwb25zZRIPCgdzcGFjZUlkGAEgASgFEjAKDWNoYXJhY3Rlckxpc3QYAiAD",
-            "KAsyGS5Qcm90by5NZXNzYWdlLk5DaGFyYWN0ZXIiLgoaU3BhY2VDaGFyYXRl",
-            "ckxlYXZlUmVzcG9uc2USEAoIZW50aXR5SWQYASABKAUidwoHUmVxdWVzdBI4",
-            "Cgx1c2VyUmVnaXN0ZXIYASABKAsyIi5Qcm90by5NZXNzYWdlLlVzZXJSZWdp",
-            "c3RlclJlcXVlc3QSMgoJdXNlckxvZ2luGAIgASgLMh8uUHJvdG8uTWVzc2Fn",
-            "ZS5Vc2VyTG9naW5SZXF1ZXN0IngKCFJlc3BvbnNlEjgKDHVzZXJSZWdpc3Rl",
-            "chgBIAEoCzIiLlByb3RvLk1lc3NhZ2UuVXNlclJlZ2lzdGVyUmVwb25zZRIy",
-            "Cgl1c2VyTG9naW4YAiABKAsyHy5Qcm90by5NZXNzYWdlLlVzZXJMb2dpblJl",
-            "cG9uc2UiOQoTVXNlclJlZ2lzdGVyUmVxdWVzdBIQCgh1c2VybmFtZRgBIAEo",
-            "CRIQCghwYXNzd29yZBgCIAEoCSI0ChNVc2VyUmVnaXN0ZXJSZXBvbnNlEgwK",
-            "BGNvZGUYASABKAUSDwoHbWVzc2FnZRgCIAEoCSI2ChBVc2VyTG9naW5SZXF1",
-            "ZXN0EhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIkIKEFVz",
-            "ZXJMb2dpblJlcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIMCgRjb2RlGAIgASgF",
-            "Eg8KB21lc3NhZ2UYAyABKAkiNwoWQ2hhcmFjdGVyQ3JlYXRlUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJEg8KB0pvYlR5cGUYAiABKAUixQEKCk5DaGFyYWN0ZXIS",
-            "CgoCaWQYASABKAUSDwoHdHlwZV9pZBgCIAEoBRIRCgllbnRpdHlfaWQYAyAB",
-            "KAUSDAoEbmFtZRgEIAEoCRINCgVsZXZlbBgFIAEoBRILCgNleHAYBiABKAMS",
-            "DwoHc3BhY2VJZBgHIAEoBRIMCgRnb2xkGAggASgDEiYKBmVudGl0eRgJIAEo",
-            "CzIWLlByb3RvLk1lc3NhZ2UuTkVudGl0eRIKCgJocBgKIAEoBRIKCgJtcBgL",
-            "IAEoBSJpChdDaGFyYWN0ZXJDcmVhdGVSZXNwb25zZRIPCgdzdWNjZXNzGAEg",
-            "ASgIEg8KB21lc3NhZ2UYAiABKAkSLAoJY2hhcmFjdGVyGAMgASgLMhkuUHJv",
-            "dG8uTWVzc2FnZS5OQ2hhcmFjdGVyIhYKFENoYXJhY3Rlckxpc3RSZXF1ZXN0",
-            "IkkKFUNoYXJhY3Rlckxpc3RSZXNwb25zZRIwCg1jaGFyYWN0ZXJMaXN0GAEg",
-            "AygLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVyIi0KFkNoYXJhY3RlckRl",
-            "bGV0ZVJlcXVlc3QSEwoLY2hhcmFjdGVySWQYASABKAUiOwoXQ2hhcmFjdGVy",
-            "RGVsZXRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIg",
-            "ASgJKj8KC0VudGl0eVN0YXRlEggKBE5PTkUQABIICgRJRExFEAESCAoETU9W",
-            "RRACEggKBEpVTVAQAxIICgRSSURFEARiBnByb3RvMw=="));
+            "cm90by5NZXNzYWdlLkVudGl0eVN0YXRlEg0KBWZvcmNlGAMgASgIIkgKFlNw",
+            "YWNlRW50aXR5U3luY1JlcXVlc3QSLgoKZW50aXR5U3luYxgBIAEoCzIaLlBy",
+            "b3RvLk1lc3NhZ2UuTkVudGl0eVN5bmMiSQoXU3BhY2VFbnRpdHlTeW5jUmVz",
+            "cG9uc2USLgoKZW50aXR5U3luYxgBIAEoCzIaLlByb3RvLk1lc3NhZ2UuTkVu",
+            "dGl0eVN5bmMiJwoQR2FtZUVudGVyUmVxdWVzdBITCgtjaGFyYWN0ZXJJZBgB",
+            "IAEoBSJ5ChFHYW1lRW50ZXJSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEiYK",
+            "BmVudGl0eRgCIAEoCzIWLlByb3RvLk1lc3NhZ2UuTkVudGl0eRIrCghjaGFy",
+            "YXRlchgDIAEoCzIZLlByb3RvLk1lc3NhZ2UuTkNoYXJhY3RlciJfChpTcGFj",
+            "ZUNoYXJhdGVyRW50ZXJSZXNwb25zZRIPCgdzcGFjZUlkGAEgASgFEjAKDWNo",
+            "YXJhY3Rlckxpc3QYAiADKAsyGS5Qcm90by5NZXNzYWdlLk5DaGFyYWN0ZXIi",
+            "LgoaU3BhY2VDaGFyYXRlckxlYXZlUmVzcG9uc2USEAoIZW50aXR5SWQYASAB",
+            "KAUidwoHUmVxdWVzdBI4Cgx1c2VyUmVnaXN0ZXIYASABKAsyIi5Qcm90by5N",
+            "ZXNzYWdlLlVzZXJSZWdpc3RlclJlcXVlc3QSMgoJdXNlckxvZ2luGAIgASgL",
+            "Mh8uUHJvdG8uTWVzc2FnZS5Vc2VyTG9naW5SZXF1ZXN0IngKCFJlc3BvbnNl",
+            "EjgKDHVzZXJSZWdpc3RlchgBIAEoCzIiLlByb3RvLk1lc3NhZ2UuVXNlclJl",
+            "Z2lzdGVyUmVwb25zZRIyCgl1c2VyTG9naW4YAiABKAsyHy5Qcm90by5NZXNz",
+            "YWdlLlVzZXJMb2dpblJlcG9uc2UiOQoTVXNlclJlZ2lzdGVyUmVxdWVzdBIQ",
+            "Cgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSI0ChNVc2VyUmVn",
+            "aXN0ZXJSZXBvbnNlEgwKBGNvZGUYASABKAUSDwoHbWVzc2FnZRgCIAEoCSI2",
+            "ChBVc2VyTG9naW5SZXF1ZXN0EhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3",
+            "b3JkGAIgASgJIkIKEFVzZXJMb2dpblJlcG9uc2USDwoHc3VjY2VzcxgBIAEo",
+            "CBIMCgRjb2RlGAIgASgFEg8KB21lc3NhZ2UYAyABKAkiNwoWQ2hhcmFjdGVy",
+            "Q3JlYXRlUmVxdWVzdBIMCgRuYW1lGAEgASgJEg8KB0pvYlR5cGUYAiABKAUi",
+            "xQEKCk5DaGFyYWN0ZXISCgoCaWQYASABKAUSDwoHdHlwZV9pZBgCIAEoBRIR",
+            "CgllbnRpdHlfaWQYAyABKAUSDAoEbmFtZRgEIAEoCRINCgVsZXZlbBgFIAEo",
+            "BRILCgNleHAYBiABKAMSDwoHc3BhY2VJZBgHIAEoBRIMCgRnb2xkGAggASgD",
+            "EiYKBmVudGl0eRgJIAEoCzIWLlByb3RvLk1lc3NhZ2UuTkVudGl0eRIKCgJo",
+            "cBgKIAEoBRIKCgJtcBgLIAEoBSJpChdDaGFyYWN0ZXJDcmVhdGVSZXNwb25z",
+            "ZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkSLAoJY2hhcmFj",
+            "dGVyGAMgASgLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVyIhYKFENoYXJh",
+            "Y3Rlckxpc3RSZXF1ZXN0IkkKFUNoYXJhY3Rlckxpc3RSZXNwb25zZRIwCg1j",
+            "aGFyYWN0ZXJMaXN0GAEgAygLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVy",
+            "Ii0KFkNoYXJhY3RlckRlbGV0ZVJlcXVlc3QSEwoLY2hhcmFjdGVySWQYASAB",
+            "KAUiOwoXQ2hhcmFjdGVyRGVsZXRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEo",
+            "CBIPCgdtZXNzYWdlGAIgASgJKj8KC0VudGl0eVN0YXRlEggKBE5PTkUQABII",
+            "CgRJRExFEAESCAoETU9WRRACEggKBEpVTVAQAxIICgRSSURFEARiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Proto.Message.EntityState), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -74,7 +75,7 @@ namespace Proto.Message {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.HeartBeatResponse), global::Proto.Message.HeartBeatResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NVector3), global::Proto.Message.NVector3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NEntity), global::Proto.Message.NEntity.Parser, new[]{ "Id", "Position", "Direction", "Speed" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NEntitySync), global::Proto.Message.NEntitySync.Parser, new[]{ "Entity", "State" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NEntitySync), global::Proto.Message.NEntitySync.Parser, new[]{ "Entity", "State", "Force" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceEntitySyncRequest), global::Proto.Message.SpaceEntitySyncRequest.Parser, new[]{ "EntitySync" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.SpaceEntitySyncResponse), global::Proto.Message.SpaceEntitySyncResponse.Parser, new[]{ "EntitySync" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.GameEnterRequest), global::Proto.Message.GameEnterRequest.Parser, new[]{ "CharacterId" }, null, null, null, null),
@@ -1035,6 +1036,7 @@ namespace Proto.Message {
     public NEntitySync(NEntitySync other) : this() {
       entity_ = other.entity_ != null ? other.entity_.Clone() : null;
       state_ = other.state_;
+      force_ = other.force_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1068,6 +1070,18 @@ namespace Proto.Message {
       }
     }
 
+    /// <summary>Field number for the "force" field.</summary>
+    public const int ForceFieldNumber = 3;
+    private bool force_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Force {
+      get { return force_; }
+      set {
+        force_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1085,6 +1099,7 @@ namespace Proto.Message {
       }
       if (!object.Equals(Entity, other.Entity)) return false;
       if (State != other.State) return false;
+      if (Force != other.Force) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1094,6 +1109,7 @@ namespace Proto.Message {
       int hash = 1;
       if (entity_ != null) hash ^= Entity.GetHashCode();
       if (State != global::Proto.Message.EntityState.None) hash ^= State.GetHashCode();
+      if (Force != false) hash ^= Force.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1116,6 +1132,10 @@ namespace Proto.Message {
         output.WriteRawTag(10);
         output.WriteMessage(Entity);
       }
+      if (Force != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Force);
+      }
       if (State != global::Proto.Message.EntityState.None) {
         output.WriteRawTag(32);
         output.WriteEnum((int) State);
@@ -1133,6 +1153,10 @@ namespace Proto.Message {
       if (entity_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Entity);
+      }
+      if (Force != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Force);
       }
       if (State != global::Proto.Message.EntityState.None) {
         output.WriteRawTag(32);
@@ -1153,6 +1177,9 @@ namespace Proto.Message {
       }
       if (State != global::Proto.Message.EntityState.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
+      }
+      if (Force != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1175,6 +1202,9 @@ namespace Proto.Message {
       if (other.State != global::Proto.Message.EntityState.None) {
         State = other.State;
       }
+      if (other.Force != false) {
+        Force = other.Force;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1195,6 +1225,10 @@ namespace Proto.Message {
               Entity = new global::Proto.Message.NEntity();
             }
             input.ReadMessage(Entity);
+            break;
+          }
+          case 24: {
+            Force = input.ReadBool();
             break;
           }
           case 32: {
@@ -1221,6 +1255,10 @@ namespace Proto.Message {
               Entity = new global::Proto.Message.NEntity();
             }
             input.ReadMessage(Entity);
+            break;
+          }
+          case 24: {
+            Force = input.ReadBool();
             break;
           }
           case 32: {

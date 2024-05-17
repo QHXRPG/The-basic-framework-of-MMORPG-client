@@ -92,5 +92,14 @@ public class GameObjManager : MonoBehaviour
         int entityid = entitySync.Entity.Id;
         var gameObject = dict.GetValueOrDefault(entityid, null);
         gameObject?.GetComponent<GameEntity>().SetData(entitySync.Entity);
+        if(entitySync.Force)
+        {
+            var characterController = GetComponent<CharacterController>();
+
+            // 把网络类型转成Unity本地类型
+            Vector3 target = V3.Of(entitySync.Entity.Position);
+            Vector3 movement = target - characterController.transform.position;
+            characterController.Move(movement);
+        }
     }
 }
