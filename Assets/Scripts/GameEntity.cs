@@ -14,6 +14,7 @@ public class GameEntity : MonoBehaviour
     public Vector3 position;
     public Vector3 direction;
     public bool isMine;   // 是否是自己控制的角色
+    public string entityName = "QHXRPG";
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,30 @@ public class GameEntity : MonoBehaviour
             yield return new WaitForSeconds(0.2f); // 等待0.1秒
         }
     }
+
+    private void OnGUI()
+    {
+        // 设置昵称距离角色的高度
+        float height = 1.8f;
+        var playerCamera = Camera.main;
+
+        // 计算角色头顶的世界坐标
+        var pos = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
+
+        // 把世界坐标转屏幕坐标
+        Vector2 uiPos = playerCamera.WorldToScreenPoint(pos);
+        uiPos = new Vector2(uiPos.x, Screen.height - uiPos.y);
+
+        // 计算文字需要占用的尺寸
+        Vector2 nameSize = GUI.skin.label.CalcSize(new GUIContent(entityName));
+
+        // 计算文字矩形框（左上角坐标以及宽高）
+        GUI.color = Color.yellow;
+        var rect = new Rect(uiPos.x - (nameSize.x) / 2, uiPos.y - nameSize.y, nameSize.x, nameSize.y);
+        GUI.Label(rect, entityName);
+    }
+
+
 
     // Update is called once per frame
     void Update()
