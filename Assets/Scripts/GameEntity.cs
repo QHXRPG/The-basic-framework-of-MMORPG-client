@@ -21,6 +21,8 @@ public class GameEntity : MonoBehaviour
     private float fallSpeed = 0f;  // 下落速度
     private float fallSpeedMax = 30f;  // 最大下落速度
 
+    public float speed; // 移动速度
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class GameEntity : MonoBehaviour
             }
         }
     };
-    internal float speed = 2;
+
 
     // 向服务器发送同步请求
     IEnumerator SyncRequest()
@@ -135,6 +137,7 @@ public class GameEntity : MonoBehaviour
         var d = nEntity.Direction;
         this.position = ToVector3(nEntity.Position);
         this.direction = ToVector3(nEntity.Direction);
+        this.speed = nEntity.Speed * 0.001f;
         if (isMine) 
         {
             this.transform.position = position;

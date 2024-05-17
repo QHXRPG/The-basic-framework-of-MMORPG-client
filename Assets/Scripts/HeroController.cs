@@ -72,6 +72,8 @@ public class HeroController : MonoBehaviour
         //offset最大距离为20
         offset = Vector3.ClampMagnitude(offset, 20);
 
+        this.speed = GetComponent<GameEntity>().speed;
+
         //this.speed = GetComponent<GameEntity>().speed;
 
         //控制英雄移动

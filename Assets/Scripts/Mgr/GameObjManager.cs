@@ -94,10 +94,10 @@ public class GameObjManager : MonoBehaviour
         gameObject?.GetComponent<GameEntity>().SetData(entitySync.Entity);
         if(entitySync.Force)
         {
-            var characterController = GetComponent<CharacterController>();
+            var characterController = gameObject.GetComponent<CharacterController>();
 
             // 把网络类型转成Unity本地类型
-            Vector3 target = V3.Of(entitySync.Entity.Position);
+            Vector3 target = V3.Of(entitySync.Entity.Position) * 0.001f;
             Vector3 movement = target - characterController.transform.position;
             characterController.Move(movement);
         }
