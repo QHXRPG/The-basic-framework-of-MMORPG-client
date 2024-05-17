@@ -54,23 +54,25 @@ namespace Proto.Message {
             "b3JkGAIgASgJIkIKEFVzZXJMb2dpblJlcG9uc2USDwoHc3VjY2VzcxgBIAEo",
             "CBIMCgRjb2RlGAIgASgFEg8KB21lc3NhZ2UYAyABKAkiNwoWQ2hhcmFjdGVy",
             "Q3JlYXRlUmVxdWVzdBIMCgRuYW1lGAEgASgJEg8KB0pvYlR5cGUYAiABKAUi",
-            "xQEKCk5DaGFyYWN0ZXISCgoCaWQYASABKAUSDwoHdHlwZV9pZBgCIAEoBRIR",
-            "CgllbnRpdHlfaWQYAyABKAUSDAoEbmFtZRgEIAEoCRINCgVsZXZlbBgFIAEo",
-            "BRILCgNleHAYBiABKAMSDwoHc3BhY2VJZBgHIAEoBRIMCgRnb2xkGAggASgD",
-            "EiYKBmVudGl0eRgJIAEoCzIWLlByb3RvLk1lc3NhZ2UuTkVudGl0eRIKCgJo",
-            "cBgKIAEoBRIKCgJtcBgLIAEoBSJpChdDaGFyYWN0ZXJDcmVhdGVSZXNwb25z",
-            "ZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkSLAoJY2hhcmFj",
-            "dGVyGAMgASgLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVyIhYKFENoYXJh",
-            "Y3Rlckxpc3RSZXF1ZXN0IkkKFUNoYXJhY3Rlckxpc3RSZXNwb25zZRIwCg1j",
-            "aGFyYWN0ZXJMaXN0GAEgAygLMhkuUHJvdG8uTWVzc2FnZS5OQ2hhcmFjdGVy",
-            "Ii0KFkNoYXJhY3RlckRlbGV0ZVJlcXVlc3QSEwoLY2hhcmFjdGVySWQYASAB",
-            "KAUiOwoXQ2hhcmFjdGVyRGVsZXRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEo",
-            "CBIPCgdtZXNzYWdlGAIgASgJKj8KC0VudGl0eVN0YXRlEggKBE5PTkUQABII",
-            "CgRJRExFEAESCAoETU9WRRACEggKBEpVTVAQAxIICgRSSURFEARiBnByb3Rv",
-            "Mw=="));
+            "8AEKCk5DaGFyYWN0ZXISCgoCaWQYASABKAUSCwoDdGlkGAIgASgFEhEKCWVu",
+            "dGl0eV9pZBgDIAEoBRIMCgRuYW1lGAQgASgJEg0KBWxldmVsGAUgASgFEgsK",
+            "A2V4cBgGIAEoAxIPCgdzcGFjZUlkGAcgASgFEgwKBGdvbGQYCCABKAMSJgoG",
+            "ZW50aXR5GAkgASgLMhYuUHJvdG8uTWVzc2FnZS5ORW50aXR5EgoKAmhwGAog",
+            "ASgFEgoKAm1wGAsgASgFEi0KCmVudGl0eVR5cGUYDCABKA4yGS5Qcm90by5N",
+            "ZXNzYWdlLkVudGl0eVR5cGUiaQoXQ2hhcmFjdGVyQ3JlYXRlUmVzcG9uc2US",
+            "DwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJEiwKCWNoYXJhY3Rl",
+            "chgDIAEoCzIZLlByb3RvLk1lc3NhZ2UuTkNoYXJhY3RlciIWChRDaGFyYWN0",
+            "ZXJMaXN0UmVxdWVzdCJJChVDaGFyYWN0ZXJMaXN0UmVzcG9uc2USMAoNY2hh",
+            "cmFjdGVyTGlzdBgBIAMoCzIZLlByb3RvLk1lc3NhZ2UuTkNoYXJhY3RlciIt",
+            "ChZDaGFyYWN0ZXJEZWxldGVSZXF1ZXN0EhMKC2NoYXJhY3RlcklkGAEgASgF",
+            "IjsKF0NoYXJhY3RlckRlbGV0ZVJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgS",
+            "DwoHbWVzc2FnZRgCIAEoCSoxCgpFbnRpdHlUeXBlEg0KCUNoYXJhY3RlchAA",
+            "EgsKB01vbnN0ZXIQARIHCgNOUEMQAio/CgtFbnRpdHlTdGF0ZRIICgROT05F",
+            "EAASCAoESURMRRABEggKBE1PVkUQAhIICgRKVU1QEAMSCAoEUklERRAEYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Proto.Message.EntityState), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Proto.Message.EntityType), typeof(global::Proto.Message.EntityState), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.HeartBeatRequest), global::Proto.Message.HeartBeatRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.HeartBeatResponse), global::Proto.Message.HeartBeatResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NVector3), global::Proto.Message.NVector3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
@@ -89,7 +91,7 @@ namespace Proto.Message {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.UserLoginRequest), global::Proto.Message.UserLoginRequest.Parser, new[]{ "Username", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.UserLoginReponse), global::Proto.Message.UserLoginReponse.Parser, new[]{ "Success", "Code", "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.CharacterCreateRequest), global::Proto.Message.CharacterCreateRequest.Parser, new[]{ "Name", "JobType" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NCharacter), global::Proto.Message.NCharacter.Parser, new[]{ "Id", "TypeId", "EntityId", "Name", "Level", "Exp", "SpaceId", "Gold", "Entity", "Hp", "Mp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.NCharacter), global::Proto.Message.NCharacter.Parser, new[]{ "Id", "Tid", "EntityId", "Name", "Level", "Exp", "SpaceId", "Gold", "Entity", "Hp", "Mp", "EntityType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.CharacterCreateResponse), global::Proto.Message.CharacterCreateResponse.Parser, new[]{ "Success", "Message", "Character" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.CharacterListRequest), global::Proto.Message.CharacterListRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Message.CharacterListResponse), global::Proto.Message.CharacterListResponse.Parser, new[]{ "CharacterList" }, null, null, null, null),
@@ -101,6 +103,12 @@ namespace Proto.Message {
 
   }
   #region Enums
+  public enum EntityType {
+    [pbr::OriginalName("Character")] Character = 0,
+    [pbr::OriginalName("Monster")] Monster = 1,
+    [pbr::OriginalName("NPC")] Npc = 2,
+  }
+
   public enum EntityState {
     [pbr::OriginalName("NONE")] None = 0,
     [pbr::OriginalName("IDLE")] Idle = 1,
@@ -4247,7 +4255,7 @@ namespace Proto.Message {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NCharacter(NCharacter other) : this() {
       id_ = other.id_;
-      typeId_ = other.typeId_;
+      tid_ = other.tid_;
       entityId_ = other.entityId_;
       name_ = other.name_;
       level_ = other.level_;
@@ -4257,6 +4265,7 @@ namespace Proto.Message {
       entity_ = other.entity_ != null ? other.entity_.Clone() : null;
       hp_ = other.hp_;
       mp_ = other.mp_;
+      entityType_ = other.entityType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4278,15 +4287,18 @@ namespace Proto.Message {
       }
     }
 
-    /// <summary>Field number for the "type_id" field.</summary>
-    public const int TypeIdFieldNumber = 2;
-    private int typeId_;
+    /// <summary>Field number for the "tid" field.</summary>
+    public const int TidFieldNumber = 2;
+    private int tid_;
+    /// <summary>
+    /// 单位类型
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int TypeId {
-      get { return typeId_; }
+    public int Tid {
+      get { return tid_; }
       set {
-        typeId_ = value;
+        tid_ = value;
       }
     }
 
@@ -4398,6 +4410,18 @@ namespace Proto.Message {
       }
     }
 
+    /// <summary>Field number for the "entityType" field.</summary>
+    public const int EntityTypeFieldNumber = 12;
+    private global::Proto.Message.EntityType entityType_ = global::Proto.Message.EntityType.Character;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Proto.Message.EntityType EntityType {
+      get { return entityType_; }
+      set {
+        entityType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4414,7 +4438,7 @@ namespace Proto.Message {
         return true;
       }
       if (Id != other.Id) return false;
-      if (TypeId != other.TypeId) return false;
+      if (Tid != other.Tid) return false;
       if (EntityId != other.EntityId) return false;
       if (Name != other.Name) return false;
       if (Level != other.Level) return false;
@@ -4424,6 +4448,7 @@ namespace Proto.Message {
       if (!object.Equals(Entity, other.Entity)) return false;
       if (Hp != other.Hp) return false;
       if (Mp != other.Mp) return false;
+      if (EntityType != other.EntityType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4432,7 +4457,7 @@ namespace Proto.Message {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (TypeId != 0) hash ^= TypeId.GetHashCode();
+      if (Tid != 0) hash ^= Tid.GetHashCode();
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
@@ -4442,6 +4467,7 @@ namespace Proto.Message {
       if (entity_ != null) hash ^= Entity.GetHashCode();
       if (Hp != 0) hash ^= Hp.GetHashCode();
       if (Mp != 0) hash ^= Mp.GetHashCode();
+      if (EntityType != global::Proto.Message.EntityType.Character) hash ^= EntityType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4464,9 +4490,9 @@ namespace Proto.Message {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (TypeId != 0) {
+      if (Tid != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(TypeId);
+        output.WriteInt32(Tid);
       }
       if (EntityId != 0) {
         output.WriteRawTag(24);
@@ -4503,6 +4529,10 @@ namespace Proto.Message {
       if (Mp != 0) {
         output.WriteRawTag(88);
         output.WriteInt32(Mp);
+      }
+      if (EntityType != global::Proto.Message.EntityType.Character) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) EntityType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4518,9 +4548,9 @@ namespace Proto.Message {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (TypeId != 0) {
+      if (Tid != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(TypeId);
+        output.WriteInt32(Tid);
       }
       if (EntityId != 0) {
         output.WriteRawTag(24);
@@ -4558,6 +4588,10 @@ namespace Proto.Message {
         output.WriteRawTag(88);
         output.WriteInt32(Mp);
       }
+      if (EntityType != global::Proto.Message.EntityType.Character) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) EntityType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4571,8 +4605,8 @@ namespace Proto.Message {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (TypeId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TypeId);
+      if (Tid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tid);
       }
       if (EntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(EntityId);
@@ -4601,6 +4635,9 @@ namespace Proto.Message {
       if (Mp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Mp);
       }
+      if (EntityType != global::Proto.Message.EntityType.Character) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EntityType);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4616,8 +4653,8 @@ namespace Proto.Message {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.TypeId != 0) {
-        TypeId = other.TypeId;
+      if (other.Tid != 0) {
+        Tid = other.Tid;
       }
       if (other.EntityId != 0) {
         EntityId = other.EntityId;
@@ -4649,6 +4686,9 @@ namespace Proto.Message {
       if (other.Mp != 0) {
         Mp = other.Mp;
       }
+      if (other.EntityType != global::Proto.Message.EntityType.Character) {
+        EntityType = other.EntityType;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -4669,7 +4709,7 @@ namespace Proto.Message {
             break;
           }
           case 16: {
-            TypeId = input.ReadInt32();
+            Tid = input.ReadInt32();
             break;
           }
           case 24: {
@@ -4709,6 +4749,10 @@ namespace Proto.Message {
           }
           case 88: {
             Mp = input.ReadInt32();
+            break;
+          }
+          case 96: {
+            EntityType = (global::Proto.Message.EntityType) input.ReadEnum();
             break;
           }
         }
@@ -4731,7 +4775,7 @@ namespace Proto.Message {
             break;
           }
           case 16: {
-            TypeId = input.ReadInt32();
+            Tid = input.ReadInt32();
             break;
           }
           case 24: {
@@ -4771,6 +4815,10 @@ namespace Proto.Message {
           }
           case 88: {
             Mp = input.ReadInt32();
+            break;
+          }
+          case 96: {
+            EntityType = (global::Proto.Message.EntityType) input.ReadEnum();
             break;
           }
         }

@@ -59,7 +59,7 @@ public class RoleListController : MonoBehaviour
         // 解析角色列表
         foreach (var p in msg.CharacterList)
         {
-            roles.Add(new RoleInfo() { Name = p.Name, Job = p.TypeId, Level = p.Level, RoleId=p.Id});
+            roles.Add(new RoleInfo() { Name = p.Name, Job = p.Tid, Level = p.Level, RoleId=p.Id});
         }
         UnityMainThreadDispatcher.Instance().Enqueue(() =>
         {
