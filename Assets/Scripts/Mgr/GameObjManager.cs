@@ -1,4 +1,5 @@
 using Assets.Scripts.u3d_scripts;
+using GameClient.Entities;
 using Proto.Message;
 using Summer;
 using System.Collections;
@@ -55,7 +56,7 @@ public class GameObjManager : MonoBehaviour
             if(initPos.y == 0)
             {
                 initPos = GameTools.CalculateGroundPosition(initPos);
-                Debug.Log("initPos :" + initPos);
+                Debug.Log("Pos :" + initPos);
             }
 
             //加载预制体
@@ -117,6 +118,15 @@ public class GameObjManager : MonoBehaviour
         int entityid = entitySync.Entity.Id;
         var gameObject = dict.GetValueOrDefault(entityid, null);
         if (gameObject == null) return;
+        Vector3 Pos = V3.Of(entitySync.Entity.Position) / 1000f;  // 出生点
+
+        // 计算地面的坐标
+        if (Pos.y == 0)
+        {
+            Pos = GameTools.CalculateGroundPosition(Pos, 20);
+            entitySync.Entity.Position = V3.ToNVector3(Pos*1000);
+            Debug.Log("Pos :" + Pos);
+        }
         var gameEntity = gameObject.GetComponent<GameEntity>();
         gameEntity.SetData(entitySync.Entity);
         if(entitySync.Force)
