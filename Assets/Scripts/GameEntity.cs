@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Proto;
 using Proto.Message;
-using static UnityEngine.EventSystems.EventTrigger;
 
 
 // 维护 实体信息（角色、怪物等） 挂载在预制体上
@@ -22,6 +21,8 @@ public class GameEntity : MonoBehaviour
     private float fallSpeedMax = 30f;  // 最大下落速度
 
     public float speed; // 移动速度
+
+    public EntityState entityState;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,8 @@ public class GameEntity : MonoBehaviour
             // 当前客户端只循环向服务端发送自己角色的信息，别人的角色信息由别人的客户端去发送
             if(isMine && transform.hasChanged) // 是自己的角色，并且发生了位置方向的变化
             {
-                request.EntitySync.Entity.Id = entityId;
+                request.EntitySync.Entity.Id = entityId;   //向服务器实体id
+                request.EntitySync.State = entityState;     //向服务器同步状态
                 SetValue(this.position * 1000, request.EntitySync.Entity.Position);
                 SetValue(this.direction * 1000, request.EntitySync.Entity.Direction);
                 Debug.Log(request);
@@ -63,7 +65,7 @@ public class GameEntity : MonoBehaviour
             }
 
 
-            yield return new WaitForSeconds(0.2f); // 等待0.1秒
+            yield return new WaitForSeconds(0.1f); // 等待0.1秒
         }
     }
 
@@ -97,7 +99,7 @@ public class GameEntity : MonoBehaviour
         if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性
         {
             // 利用插值解决客户端这边显示别人移动时卡顿的现象
-            this.transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 5f);
+            Move(Vector3.Lerp(transform.position, position, Time.deltaTime * 5f));
 
             //四元数
             var targetRotation = Quaternion.Euler(direction);
@@ -140,9 +142,19 @@ public class GameEntity : MonoBehaviour
         this.speed = nEntity.Speed * 0.001f;
         if (isMine) 
         {
-            this.transform.position = position;
             this.transform.rotation = Quaternion.Euler(direction);
+            Move(position);
         }
+    }
+
+
+    // 移动到指定位置
+    public void Move(Vector3 target)
+    {
+        var controller = GetComponent<CharacterController>();
+        Vector3 movement = target - controller.transform.position;
+        controller.Move(movement);
+
     }
 
 

@@ -1,7 +1,10 @@
+using Assets.Scripts.u3d_scripts;
+using Proto.Message;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Summer;
 
 public class HeroAnimations : MonoBehaviour
 {
@@ -16,13 +19,30 @@ public class HeroAnimations : MonoBehaviour
     }
     public HState state = HState.Idle;
     Animator animator;
-
-
+    GameEntity gameEntity;
 
     void Start()
     {
+        gameEntity = GetComponent<GameEntity>();
         animator = GetComponent<Animator>();
+        QHXRPG.Event.RegisterOut("EntitySync", this, "EntitySync");
     }
+
+    // 实体位置同步
+    public void EntitySync(NEntitySync entitySync)
+    {
+        int entityid = entitySync.Entity.Id;
+        if(entityid != gameEntity.entityId) { return; }
+        switch(entitySync.State) 
+        {
+            case EntityState.Idle:
+                PlayIdle(); break;
+            case EntityState.Move:
+                PlayRun(); break;   
+        }
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -47,6 +67,7 @@ public class HeroAnimations : MonoBehaviour
         SetFalseAll();
         animator.SetBool("idle", true);
         state = HState.Idle;  // 播放了不同的动画，就把当前状态切换为这个动画所对应的状态
+        gameEntity.entityState = Proto.Message.EntityState.Idle;
     }
 
     public void PlayRun()
@@ -56,6 +77,7 @@ public class HeroAnimations : MonoBehaviour
         SetFalseAll();
         animator.SetBool("run", true);
         state= HState.Run;
+        gameEntity.entityState = Proto.Message.EntityState.Move;
     }
 
     public void PlayAttack1()
@@ -80,6 +102,12 @@ public class HeroAnimations : MonoBehaviour
 
     }
     public void Attack01End()
+    {
+        state = HState.None;
+        PlayIdle();
+    }
+
+    public void Attack02End()
     {
         state = HState.None;
         PlayIdle();

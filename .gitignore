@@ -392,3 +392,6 @@ FodyWeavers.xsd
 *.unity
 *.lighting
 /Assets/Scenes/SelectHero.unity
+/Assets/FreeCharacter
+/Assets/Resources/Prefabs
+/Assets/Animator/FreeChara1002.controller

@@ -117,7 +117,7 @@
   "1002": {
     "TID": 1002,
     "Name": "狼",
-    "Resource": "Prefabs/DogPBR",
+    "Resource": "Prefabs/1002",
     "Type": "Monster",
     "Decs": "",
     "Speed": 3000,

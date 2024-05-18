@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
 using Assets.Scripts.u3d_scripts;
+using GameClient.Mgr;
 
 
 public class NetStart : MonoBehaviour
@@ -61,7 +62,7 @@ public class NetStart : MonoBehaviour
     //有角色离开地图
     private void _SpaceCharaterLeaveResponse(Connection conn, SpaceCharaterLeaveResponse msg)
     {
-        QHXRPG.Event.FireOut("CharacterLeave", msg.EntityId);
+        EntityManager.Instance.RemoveEntity(msg.EntityId);
     }
 
     // 来自服务器的心跳响应
@@ -98,33 +99,37 @@ public class NetStart : MonoBehaviour
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
         Debug.Log(msg);
-
-        // 涉及到游戏对象的获取和访问，必须保证该过程在UI线程（主线程）中进行
-        QHXRPG.Event.FireOut("EntitySync", msg.EntitySync);
+        EntityManager.Instance.OnEntitySync(msg.EntitySync);
     }
 
-    // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 触发一次 本人
+
+    // 加入游戏的响应结果(这里的 Entity 是新客户端连接的) 本人
     private void _GameEnterResponse(Connection conn, GameEnterResponse msg)
     {
         Debug.Log("加入游戏的响应结果："+ msg.Success);
         if(msg.Success)
         {
             Debug.Log("角色信息：" + msg);
-            var chr = msg.Charater;
-            chr.Entity = msg.Entity;
-            GameApp.CharacterId = chr.Id; // 记录全局游戏的id
-            QHXRPG.Event.FireOut("CharacterEnter", chr); // 调用进入游戏的方法
+            var info = msg.Charater;
+            info.Entity = msg.Entity;
+            GameApp.CharacterId = info.Id; // 记录全局游戏的id
             GameApp.LoadSpace(msg.Charater.SpaceId);  // 进入场景
+            EntityManager.Instance.OnEntityEnter(info);
+            
         }
     }
+
 
     // 当有角色进入地图时候的通知（不是当前客户端） 触发多次
     private void _SpaceCharactersEnterResponse(Connection conn, SpaceCharaterEnterResponse msg)
     {
         Debug.Log("角色加入：地图=" + msg.SpaceId + ",entityId=" + msg.CharacterList[0].Id);
-        var character = msg.CharacterList[0];  // 取出一个 Entity
 
-        QHXRPG.Event.FireOut("CharacterEnter", character);
+        foreach (var info in msg.CharacterList) 
+        {
+            EntityManager.Instance.OnEntityEnter(info);
+            
+        }
     }
       
 

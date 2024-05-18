@@ -74,7 +74,7 @@ public class HeroController : MonoBehaviour
 
         this.speed = GetComponent<GameEntity>().speed;
 
-        //this.speed = GetComponent<GameEntity>().speed;
+        //this._speed = GetComponent<GameEntity>()._speed;
 
         //控制英雄移动
         float h = 0;
@@ -110,14 +110,16 @@ public class HeroController : MonoBehaviour
 
         //用射线检测摄像机与英雄之间是否有障碍物
         RaycastHit hit;
-        // if (Physics.Linecast(hero.transform.position, camera.transform.position, out hit))
+        // if (Physics.Linecast(hero.transform._position, camera.transform._position, out hit))
         // {
         //     //临时移动摄像机到障碍物的位置
-        //     camera.transform.position = hit.point;
+        //     camera.transform._position = hit.point;
         // }
         
         //射线检测摄像机不能穿过地面
-        if (Physics.Linecast(hero.transform.position+Vector3.up*0.5f, camera.transform.position-Vector3.up*0.3f, out hit))
+        LayerMask layerMask = 1 << LayerMask.NameToLayer("Actor");
+        if (Physics.Linecast(hero.transform.position+Vector3.up*0.5f, 
+                            camera.transform.position-Vector3.up*0.3f, out hit, ~layerMask))
         {
             //临时移动摄像机到障碍物的位置
             camera.transform.position = hit.point + Vector3.up * 0.5f;

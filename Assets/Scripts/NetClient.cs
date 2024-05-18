@@ -40,7 +40,7 @@ public class NetClient
         conn = new Connection(socket);
         conn.OnDisconnected += OnDisconnected;
         //启动消息分发器
-        MessageRouter.Instance.Start(4);
+        MessageRouter.Instance.Start(1);
     }
 
     //连接断开
