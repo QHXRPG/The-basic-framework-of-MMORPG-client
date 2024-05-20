@@ -1,0 +1,38 @@
+{
+  "1": {
+    "ID": 1,
+    "SpaceId": 2,
+    "Pos": "770676 9492 145358",
+    "Dir": 0,
+    "TID": 1002,
+    "Level": 2,
+    "Period": 60,
+    "Column7": "",
+    "Column8": "",
+    "Column9": ""
+  },
+  "2": {
+    "ID": 2,
+    "SpaceId": 2,
+    "Pos": "770676 9492 145358",
+    "Dir": 0,
+    "TID": 1003,
+    "Level": 4,
+    "Period": 60,
+    "Column7": "",
+    "Column8": "",
+    "Column9": ""
+  },
+  "3": {
+    "ID": 3,
+    "SpaceId": 2,
+    "Pos": "770676 9492 145358",
+    "Dir": 0,
+    "TID": 1002,
+    "Level": 6,
+    "Period": 60,
+    "Column7": "",
+    "Column8": "",
+    "Column9": ""
+  }
+}
