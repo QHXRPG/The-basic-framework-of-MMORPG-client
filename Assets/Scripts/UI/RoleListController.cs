@@ -74,10 +74,13 @@ public class RoleListController : MonoBehaviour
                 for (int i = 0; i < roles.Count; i++)
                 {
                     if (PanelList[i])
+                    {
                         PanelList[i].SetActive(true);
                         PanelList[i].transform.Find("Text (名字)").GetComponent<Text>().text = roles[i].Name;
                         PanelList[i].transform.Find("Text (职业)").GetComponent<Text>().text = Jobs[roles[i].Job];
                         PanelList[i].transform.Find("Text (等级)").GetComponent<Text>().text = $"Lv.{roles[i].Level}";
+                    }
+
                 }
         });
     }
@@ -172,7 +175,7 @@ public class RoleListController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
 

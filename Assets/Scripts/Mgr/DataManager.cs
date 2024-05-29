@@ -12,11 +12,15 @@ public class DataManager : Singleton<DataManager>
     // 单元字典
     public Dictionary<int, UnitDefine> Units;
 
+    // 技能字典 
+    public Dictionary<int, SkillDefine> Skills;
+
     public void Init()
     {
         // 反序列化 读取Json数据
         Spaces = Load<SpaceDefine>("Data/SpaceDefine");
         Units = Load<UnitDefine>("Data/UnitDefine");
+        Skills = Load<SkillDefine>("Data/SkillDefine");
 
     }
 

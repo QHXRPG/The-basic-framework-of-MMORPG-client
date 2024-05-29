@@ -1,4 +1,5 @@
-﻿using Proto.Message;
+﻿using GameClient.Mgr;
+using Proto.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,12 @@ namespace GameClient.Entities
     {
         public NCharacter Info;
         public UnitDefine UnitDefine;
+        public SkillManager SkillMgr;
         public Actor(NCharacter Info) : base(Info.Entity)
         {
             this.Info = Info;
             this.UnitDefine = DataManager.Instance.Units[Info.Tid];
-
+            this.SkillMgr = new SkillManager(this);
         }
     }
 }

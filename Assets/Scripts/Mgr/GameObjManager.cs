@@ -49,7 +49,7 @@ public class GameObjManager : MonoBehaviour
         // 可能是也怪，也可能是玩家
         if(! dict.ContainsKey(nCharacter.Entity.Id))  // 当 实体-角色 字典中没有当前角色的实体
         {
-            bool isMine = (nCharacter.Id == GameApp.CharacterId);
+            bool isMine = (nCharacter.Entity.Id == GameApp.Character.entityId);
             Vector3 initPos = V3.Of(nCharacter.Entity.Position) / 1000f;  // 出生点
 
             // 计算地面的坐标

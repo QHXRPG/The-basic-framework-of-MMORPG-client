@@ -7,9 +7,7 @@
     "TID": 1002,
     "Level": 2,
     "Period": 60,
-    "Column7": "",
-    "Column8": "",
-    "Column9": ""
+    "Column7": ""
   },
   "2": {
     "ID": 2,
@@ -19,9 +17,7 @@
     "TID": 1003,
     "Level": 4,
     "Period": 60,
-    "Column7": "",
-    "Column8": "",
-    "Column9": ""
+    "Column7": ""
   },
   "3": {
     "ID": 3,
@@ -31,8 +27,6 @@
     "TID": 1002,
     "Level": 6,
     "Period": 60,
-    "Column7": "",
-    "Column8": "",
-    "Column9": ""
+    "Column7": ""
   }
 }

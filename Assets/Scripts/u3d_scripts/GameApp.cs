@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameClient.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -10,8 +11,11 @@ namespace Assets.Scripts.u3d_scripts
 {
     public class GameApp
     {
-        //  全局角色 Id
-        public static int CharacterId = 0;
+        //  全局角色
+        public static Character Character;
+
+        // 选择的目标
+        public static Actor Target;
 
         // 加载游戏场景
         public static void LoadSpace(int spaceId)

@@ -50,7 +50,7 @@
   "3": {
     "TID": 3,
     "Name": "混沌系",
-    "Resource": "Prefabs/DogPBR",
+    "Resource": "Prefabs/PolyArtWizardMaskTintMat",
     "Type": "Character",
     "Decs": "高技能伤害",
     "Speed": 3000,

@@ -1,3 +1,4 @@
+using Assets.Scripts.u3d_scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,10 @@ using UnityEngine.UI;
 public class GameMgr : MonoBehaviour
 {
     public Dropdown dropdown;
+    public AbilityGroup abilityGroup;
+    public UnitFrame playerFrame;  // 主角信息框
+    public UnitFrame targetFrame;  // 目标信息框
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +34,16 @@ public class GameMgr : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
-        
+        abilityGroup.gameObject.SetActive(GameApp.Character != null);
+        playerFrame.gameObject.SetActive(GameApp.Character != null);
+        targetFrame.gameObject.SetActive(GameApp.Target != null);
+
+        // 但角色登录才显示技能栏 
+        playerFrame.actor = GameApp.Character;
+        targetFrame.actor = GameApp.Target; 
+
     }
 }

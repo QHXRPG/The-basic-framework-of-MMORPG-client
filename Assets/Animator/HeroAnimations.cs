@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Summer;
+using Animancer;
 
 public class HeroAnimations : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class HeroAnimations : MonoBehaviour
         Gethit = 5
     }
     public HState state = HState.Idle;
-    Animator animator;
-    GameEntity gameEntity;
+    GameEntity gameEntity; 
+    NamedAnimancerComponent _animancer;
+    
+    
 
     void Start()
     {
         gameEntity = GetComponent<GameEntity>();
-        animator = GetComponent<Animator>();
+        _animancer = GetComponent<NamedAnimancerComponent>();
         QHXRPG.Event.RegisterOut("EntitySync", this, "EntitySync");
     }
 
@@ -42,9 +45,25 @@ public class HeroAnimations : MonoBehaviour
         }
     }
 
+    public AnimancerState Play(string name, Action OnEnd=null)
+    {
+        if (_animancer == null) return null;
+        AnimancerState state = _animancer.TryPlay(name);
+        if (state == null)
+        {
+            Debug.LogWarning($"动画名称 {name} 不存在");
+        }
+        else
+        {
+            if (OnEnd != null)  // 事件回调不为空
+            {
+                state.Events.OnEnd = OnEnd;
+            }
+        }
+        return state;
+    }
 
-
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
 
@@ -53,20 +72,15 @@ public class HeroAnimations : MonoBehaviour
 
     private void SetFalseAll()
     {
-        animator.SetBool("idle", false);
-        animator.SetBool("run", false);
-        animator.SetBool("attack1", false);
-        animator.SetBool("die", false);
-        animator.SetBool("gethit", false);
+
     }
 
     public void PlayIdle()
     {
         if(state == HState.Attack || state == HState.Gethit)
             return;
-        SetFalseAll();
-        animator.SetBool("idle", true);
-        state = HState.Idle;  // 播放了不同的动画，就把当前状态切换为这个动画所对应的状态
+        Play("Idle");
+        state = HState.Idle;
         gameEntity.entityState = Proto.Message.EntityState.Idle;
     }
 
@@ -75,33 +89,30 @@ public class HeroAnimations : MonoBehaviour
         if (state == HState.Attack)
             return;
         SetFalseAll();
-        animator.SetBool("run", true);
-        state= HState.Run;
+        Play("Run");
+        state = HState.Run;
         gameEntity.entityState = Proto.Message.EntityState.Move;
     }
 
-    public void PlayAttack1()
+    public void PlayAttack()
     {
-        SetFalseAll();
-        animator.SetBool("attack1", true);
+        Play("Attack", OnEnd : OnAttackEnd);
         state = HState.Attack;
     }
 
     public void PlayDie()
     {
-        SetFalseAll();
-        animator.SetBool("die", true);
+        Play("Die");
         state = HState.Die;
     }
 
     public void PlayGethit()
     {
-        SetFalseAll();
-        animator.SetBool("gethit", true);
+        Play("Gethit", OnEnd : GetHitEnd);
         state = HState.Gethit;
 
     }
-    public void Attack01End()
+    public void OnAttackEnd()
     {
         state = HState.None;
         PlayIdle();

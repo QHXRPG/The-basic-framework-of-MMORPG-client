@@ -65,5 +65,24 @@ namespace GameClient.Mgr
             }
 
         }
+
+        public T GetEntity<T> (int entityId) where T : Entity
+        {
+            return (T)_dict.GetValueOrDefault(entityId);
+        }
+        public List<T> GetEntities<T>(Predicate<T> match)
+        {
+            return _dict.Values.OfType<T>().Where(e => match.Invoke(e)).ToList();
+        }
+
+        // 由主线程调用
+        public void OnUpdate(float delta)
+        {
+            foreach (var entity in _dict.Values) 
+            {
+                var actor = entity as Actor;
+                actor.SkillMgr?.OnUpdate(delta);
+            }
+        }
     }
 }

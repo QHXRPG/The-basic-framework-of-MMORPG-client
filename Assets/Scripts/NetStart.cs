@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
 using Assets.Scripts.u3d_scripts;
 using GameClient.Mgr;
+using GameClient.Entities;
 
 
 public class NetStart : MonoBehaviour
@@ -98,7 +99,7 @@ public class NetStart : MonoBehaviour
     // 角色的同步信息, 别人移动了，通过服务器把这个信息传给我们
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
-        Debug.Log(msg);
+        // Debug.Log(msg);
         EntityManager.Instance.OnEntitySync(msg.EntitySync);
     }
 
@@ -112,10 +113,12 @@ public class NetStart : MonoBehaviour
             Debug.Log("角色信息：" + msg);
             var info = msg.Charater;
             info.Entity = msg.Entity;
-            GameApp.CharacterId = info.Id; // 记录全局游戏的id
+
             GameApp.LoadSpace(msg.Charater.SpaceId);  // 进入场景
             EntityManager.Instance.OnEntityEnter(info);
-            
+
+            // 把当前游戏的对象取出来
+            GameApp.Character = EntityManager.Instance.GetEntity<Character>(msg.Entity.Id);
         }
     }
 
@@ -133,11 +136,33 @@ public class NetStart : MonoBehaviour
     }
       
 
-
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
         QHXRPG.Event.Tick();
+        if (Input.GetMouseButtonDown(0))  // 当鼠标左键被按下
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  // 从鼠标点击位置发出一条射线
+            RaycastHit hitInfo;  // 存储射线投射结果的数据
+            LayerMask actorLayer = LayerMask.GetMask("Actor");
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, actorLayer))  // 检测射线是否与特定图层的物体相交
+            {
+                GameObject clickedObject = hitInfo.collider.gameObject;  // 获取被点击的物体
+                                                                         // 在这里可以对获取到的物体进行处理
+                Debug.Log("选择目标: " + clickedObject.name);
+
+                // 通过所点击对象的 GameEntity 组件找到 entityId
+                // 再通过 entityId 找到 entity，进而找到 Actor
+                int entityId = clickedObject.GetComponent<GameEntity>().entityId;
+                GameApp.Target = EntityManager.Instance.GetEntity<Actor>(entityId);
+            }
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        EntityManager.Instance.OnUpdate(Time.fixedDeltaTime);
     }
 
     private void OnDestroy()

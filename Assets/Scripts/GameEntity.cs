@@ -59,7 +59,7 @@ public class GameEntity : MonoBehaviour
                 request.EntitySync.State = entityState;     //向服务器同步状态
                 SetValue(this.position * 1000, request.EntitySync.Entity.Position);
                 SetValue(this.direction * 1000, request.EntitySync.Entity.Direction);
-                Debug.Log(request);
+                // Debug.Log(request);
                 NetClient.Send(request);
                 transform.hasChanged = false;   
             }
@@ -93,7 +93,7 @@ public class GameEntity : MonoBehaviour
 
 
 
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
         if(!isMine)  // 如果这个角色不是自己的，实时同步服务端传来的属性

@@ -38,13 +38,13 @@ public class HeroController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
         camera = Camera.main;
         if (Input.GetKeyDown(KeyCode.Space)) // 空格为攻击动作
         { 
-            anim.PlayAttack1();
+            anim.PlayAttack();
         }
 
         //摄像机跟随英雄移动

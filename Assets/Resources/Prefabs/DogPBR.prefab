@@ -1265,6 +1265,7 @@ GameObject:
   - component: {fileID: 2686173138168854257}
   - component: {fileID: -1401394829656998739}
   - component: {fileID: 1356629520327097603}
+  - component: {fileID: 2179862620883805474}
   m_Layer: 0
   m_Name: DogPBR
   m_TagString: Untagged
@@ -1299,7 +1300,7 @@ Animator:
   m_GameObject: {fileID: 8422892626600285392}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
-  m_Controller: {fileID: 9100000, guid: a05b645eb915bfd46a922daa10da673b, type: 2}
+  m_Controller: {fileID: 9100000, guid: c23aa5dd54bca9b429f01f02e45a5a93, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1327,6 +1328,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   isMine: 0
   entityName: QHXRPG
+  speed: 0
+  entityState: 0
 --- !u!114 &-1401394829656998739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1366,6 +1369,27 @@ CharacterController:
   m_SkinWidth: 0.03
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &2179862620883805474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422892626600285392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75c0dcb6d50eb64abd727a90406ca2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 8422892626592999198}
+  _ActionOnDisable: 0
+  _PlayAutomatically: 1
+  _Animations:
+  - {fileID: 7400000, guid: 02a5a70ef5f961649b5db55ee02df619, type: 2}
+  - {fileID: 7400000, guid: 6d4e047cd12f8e84582649be33cd6511, type: 2}
+  - {fileID: 7400000, guid: f46ca2e50b77cfa47a9b8db35f8263da, type: 2}
+  - {fileID: 7400000, guid: 07679b762267a584ab3d7cba6e085821, type: 2}
+  - {fileID: 7400000, guid: 9d2be2e5443d60f479eb2ec2303a6c0c, type: 2}
 --- !u!1 &8422892626600285394
 GameObject:
   m_ObjectHideFlags: 0
