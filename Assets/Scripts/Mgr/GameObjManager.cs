@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 
-
 /*
         负责向界面当中 添加/移除游戏对象
  */
@@ -44,13 +43,13 @@ public class GameObjManager : MonoBehaviour
     }
 
     // 创建角色
-    public void CharacterEnter(NCharacter nCharacter)
+    public void CharacterEnter(NetActor NetActor)
     {
         // 可能是也怪，也可能是玩家
-        if(! dict.ContainsKey(nCharacter.Entity.Id))  // 当 实体-角色 字典中没有当前角色的实体
+        if(! dict.ContainsKey(NetActor.Entity.Id))  // 当 实体-角色 字典中没有当前角色的实体
         {
-            bool isMine = (nCharacter.Entity.Id == GameApp.Character.entityId);
-            Vector3 initPos = V3.Of(nCharacter.Entity.Position) / 1000f;  // 出生点
+            bool isMine = (NetActor.Entity.Id == GameApp.Character.entityId);
+            Vector3 initPos = V3.Of(NetActor.Entity.Position) / 1000f;  // 出生点
 
             // 计算地面的坐标
             if(initPos.y == 0)
@@ -60,7 +59,7 @@ public class GameObjManager : MonoBehaviour
             }
 
             //加载预制体
-            UnitDefine unitDefine = DataManager.Instance.Units[nCharacter.Tid];
+            UnitDefine unitDefine = DataManager.Instance.Units[NetActor.Tid];
             var prefab = Resources.Load<GameObject>(unitDefine.Resource);
 
             // 把所有创建的角色都挂在 NetStart 空对象下，这样就不会被销毁
@@ -70,11 +69,11 @@ public class GameObjManager : MonoBehaviour
             
             var gameEntity = gameObject.GetComponent<GameEntity>();
 
-            Debug.Log(nCharacter.Entity.Id);
+            Debug.Log(NetActor.Entity.Id);
             gameEntity.isMine = isMine; // 标明这是其他人的角色还是自己的角色
-            gameEntity.entityName = nCharacter.Name;
+            gameEntity.entityName = NetActor.Name;
             // 把网络端的数据设置为客户端的数据
-            gameEntity?.SetData(nCharacter.Entity);
+            gameEntity?.SetData(NetActor.Entity);
 
 
             // 给自己的角色加上英雄控制器
@@ -83,18 +82,18 @@ public class GameObjManager : MonoBehaviour
                 gameObject.AddComponent<HeroController>();
             }
 
-            if(nCharacter.EntityType == EntityType.Character)
+            if(NetActor.EntityType == EntityType.Character)
             {
-                gameObject.name = "Player-" + nCharacter.Entity.Id;
+                gameObject.name = "Player-" + NetActor.Entity.Id;
             }
 
-            if (nCharacter.EntityType == EntityType.Monster)
+            if (NetActor.EntityType == EntityType.Monster)
             {
-                gameObject.name = "Monster-" + nCharacter.Entity.Id;
+                gameObject.name = "Monster-" + NetActor.Entity.Id;
             }
 
 
-            dict.Add(nCharacter.Entity.Id, gameObject);
+            dict.Add(NetActor.Entity.Id, gameObject);
         }
 
     }
@@ -113,7 +112,7 @@ public class GameObjManager : MonoBehaviour
     }
 
     // 实体位置同步
-    public void EntitySync(NEntitySync entitySync)
+    public void EntitySync(NetEntitySync entitySync)
     {
         int entityid = entitySync.Entity.Id;
         var gameObject = dict.GetValueOrDefault(entityid, null);
@@ -124,7 +123,7 @@ public class GameObjManager : MonoBehaviour
         if (Pos.y == 0)
         {
             Pos = GameTools.CalculateGroundPosition(Pos, 20);
-            entitySync.Entity.Position = V3.ToNVector3(Pos*1000);
+            entitySync.Entity.Position = V3.ToVec3(Pos*1000);
             Debug.Log("Pos :" + Pos);
         }
         var gameEntity = gameObject.GetComponent<GameEntity>();

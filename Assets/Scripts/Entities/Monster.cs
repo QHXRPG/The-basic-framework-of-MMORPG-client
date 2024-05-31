@@ -9,7 +9,7 @@ namespace GameClient.Entities
 {
     public class Monster : Actor
     {
-        public Monster(NCharacter Info) : base(Info)
+        public Monster(NetActor Info) : base(Info)
         {
 
         }

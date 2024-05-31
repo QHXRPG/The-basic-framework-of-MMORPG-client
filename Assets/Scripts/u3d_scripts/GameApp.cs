@@ -1,4 +1,5 @@
 ﻿using GameClient.Entities;
+using Proto.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace Assets.Scripts.u3d_scripts
 
         // 选择的目标
         public static Actor Target;
+
+        public static Vec3 TargetPoint;
 
         // 加载游戏场景
         public static void LoadSpace(int spaceId)

@@ -36,12 +36,12 @@ public class GameEntity : MonoBehaviour
     // 设置为全局的，避免在每次调用时候都需要new出来，减少堆区压力
     SpaceEntitySyncRequest request = new SpaceEntitySyncRequest()
     {
-        EntitySync = new NEntitySync()
+        EntitySync = new NetEntitySync()
         {
-            Entity = new NEntity()
+            Entity = new NetEntity()
             { 
-                Position = new NVector3(), 
-                Direction = new NVector3()
+                Position = new Vec3(), 
+                Direction = new Vec3()
             }
         }
     };
@@ -132,14 +132,14 @@ public class GameEntity : MonoBehaviour
     }
 
     // 把网络端的数据设置为客户端的数据
-    public void SetData(NEntity nEntity, bool isMine = false)
+    public void SetData(NetEntity NetEntity, bool isMine = false)
     {
-        this.entityId = nEntity.Id;
-        var p = nEntity.Position;
-        var d = nEntity.Direction;
-        this.position = ToVector3(nEntity.Position);
-        this.direction = ToVector3(nEntity.Direction);
-        this.speed = nEntity.Speed * 0.001f;
+        this.entityId = NetEntity.Id;
+        var p = NetEntity.Position;
+        var d = NetEntity.Direction;
+        this.position = ToVector3(NetEntity.Position);
+        this.direction = ToVector3(NetEntity.Direction);
+        this.speed = NetEntity.Speed * 0.001f;
         if (isMine) 
         {
             this.transform.rotation = Quaternion.Euler(direction);
@@ -159,21 +159,21 @@ public class GameEntity : MonoBehaviour
 
 
     // 将Unity的三维向量*1000  转为int网络类，再发给服务端
-    private NVector3 ToNVector3(Vector3 v)
+    private Vec3 ToVec3(Vector3 v)
     {
         v *= 1000;
-        return new NVector3() { X = (int)v.x, Y = (int)v.y, Z = (int)v.z };
+        return new Vec3() { X = (int)v.x, Y = (int)v.y, Z = (int)v.z };
     }
 
     // 将int网络类*0.001，转为Unity的三维向量
-    private Vector3 ToVector3(NVector3 v)
+    private Vector3 ToVector3(Vec3 v)
     {
         return new Vector3() { x = v.X, y = v.Y, z = v.Z } * 0.001f;
     }
 
 
     // 将Unity的三维向量*1000  转为int网络类，再发给服务端(不需要new对象了，减少了堆区开销)
-    private void SetValue(Vector3 a, NVector3 b)
+    private void SetValue(Vector3 a, Vec3 b)
     {
         b.X = (int)a.x;
         b.Y = (int)a.y;

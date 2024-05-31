@@ -9,7 +9,7 @@ namespace GameClient.Entities
 {
     public class Character : Actor
     {
-        public Character(NCharacter Info) : base(Info)
+        public Character(NetActor Info) : base(Info)
         {
 
         }

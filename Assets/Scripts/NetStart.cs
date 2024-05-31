@@ -100,7 +100,7 @@ public class NetStart : MonoBehaviour
     private void _SpaceEntitySyncResponse(Connection sender, SpaceEntitySyncResponse msg)
     {
         // Debug.Log(msg);
-        EntityManager.Instance.OnEntitySync(msg.EntitySync);
+        EntityManager.Instance.ONetEntitySync(msg.EntitySync);
     }
 
 
@@ -115,7 +115,7 @@ public class NetStart : MonoBehaviour
             info.Entity = msg.Entity;
 
             GameApp.LoadSpace(msg.Charater.SpaceId);  // 进入场景
-            EntityManager.Instance.OnEntityEnter(info);
+            EntityManager.Instance.ONetEntityEnter(info);
 
             // 把当前游戏的对象取出来
             GameApp.Character = EntityManager.Instance.GetEntity<Character>(msg.Entity.Id);
@@ -130,7 +130,7 @@ public class NetStart : MonoBehaviour
 
         foreach (var info in msg.CharacterList) 
         {
-            EntityManager.Instance.OnEntityEnter(info);
+            EntityManager.Instance.ONetEntityEnter(info);
             
         }
     }

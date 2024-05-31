@@ -34,7 +34,7 @@ namespace GameClient.Mgr
             QHXRPG.Event.FireOut("CharacterLeave", entityId);
         }
 
-        public void OnEntityEnter(NCharacter info)
+        public void ONetEntityEnter(NetActor info)
         {
 
             if (info.EntityType == EntityType.Character) 
@@ -50,18 +50,18 @@ namespace GameClient.Mgr
 
 
         // 处理位置同步
-        public void OnEntitySync(NEntitySync nEntitySync)
+        public void ONetEntitySync(NetEntitySync NetEntitySync)
         {
-            var entityId = nEntitySync.Entity.Id;
-            UnityEngine.Debug.Log("OnEntitySync" + entityId);
+            var entityId = NetEntitySync.Entity.Id;
+            UnityEngine.Debug.Log("ONetEntitySync" + entityId);
             var entity = _dict.GetValueOrDefault(entityId);    
             if(entity != null) 
             {
-                entity.State = nEntitySync.State;
-                entity.EntityData = nEntitySync.Entity;
+                entity.State = NetEntitySync.State;
+                entity.EntityData = NetEntitySync.Entity;
 
                 // 涉及到游戏对象的获取和访问，必须保证该过程在UI线程（主线程）中进行
-                QHXRPG.Event.FireOut("EntitySync", nEntitySync);
+                QHXRPG.Event.FireOut("EntitySync", NetEntitySync);
             }
 
         }

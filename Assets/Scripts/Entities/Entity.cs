@@ -17,7 +17,7 @@ namespace GameClient
         private Vector3 _position;  // 位置
         private Vector3 _direction; //方向
         private int spaceId; // 所在地图ID 
-        private NEntity _netObj;  // 网络对象
+        private NetEntity _netObj;  // 网络对象
         private long _lastUpdate; // 最后一次更新时间戳
 
         public int SpaceId
@@ -28,13 +28,13 @@ namespace GameClient
 
         public int entityId { get { return _netObj.Id; } }
 
-        // 设置 Entity 时， NEntity的数值也会跟着更新
+        // 设置 Entity 时， NetEntity的数值也会跟着更新
         public Vector3 Position { 
             get { return _position; }
             set 
             { 
                 _position = value;
-                _netObj.Position = V3.ToNVector3(value);
+                _netObj.Position = V3.ToVec3(value);
                 _lastUpdate = DateTimeOffset.Now.ToUnixTimeMilliseconds();  // 更新时间戳
             }
         }
@@ -44,7 +44,7 @@ namespace GameClient
             set 
             { 
                 _direction = value;
-                _netObj.Direction = V3.ToNVector3(value);
+                _netObj.Direction = V3.ToVec3(value);
             }
         }
 
@@ -72,15 +72,15 @@ namespace GameClient
         }
 
 
-        public Entity(NEntity entity)
+        public Entity(NetEntity entity)
         {
-            _netObj = new NEntity();
+            _netObj = new NetEntity();
             _netObj.Id = entity.Id; 
             this.EntityData = entity;
         }
 
         // 把网络数值覆盖到本地去
-        public NEntity EntityData
+        public NetEntity EntityData
         {
             get { return _netObj; }
             set

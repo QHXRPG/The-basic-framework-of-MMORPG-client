@@ -32,7 +32,7 @@ public class HeroAnimations : MonoBehaviour
     }
 
     // 实体位置同步
-    public void EntitySync(NEntitySync entitySync)
+    public void EntitySync(NetEntitySync entitySync)
     {
         int entityid = entitySync.Entity.Id;
         if(entityid != gameEntity.entityId) { return; }
