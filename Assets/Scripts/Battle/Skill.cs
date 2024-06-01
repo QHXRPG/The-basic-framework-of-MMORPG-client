@@ -29,6 +29,12 @@ namespace GameClient.Battle
 
         private Sprite _icon;
 
+        public bool IsUnitTarget { get => Define.TargetType == "单位"; }
+
+        public bool IsPointTarget { get => Define.TargetType == "点"; }
+
+        public bool IsNullTarget { get => Define.TargetType == "None"; }
+
         public Sprite Icon
         {
             get
