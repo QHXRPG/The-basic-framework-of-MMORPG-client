@@ -76,5 +76,10 @@ namespace GameClient.Battle
                 Log.Information("Skill Active {0}", Define.Name);
             }
         }
+
+        public void Use(SCObject target)
+        {
+            Cooldown = Define.CD;
+        }
     }
 }

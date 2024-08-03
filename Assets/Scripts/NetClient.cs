@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using Summer.Network;
 using System;
 using Google.Protobuf;
+using Proto.Message;
 
 /// <summary>
 /// 网络客户端

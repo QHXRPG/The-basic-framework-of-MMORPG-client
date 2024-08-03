@@ -46,5 +46,11 @@ namespace GameClient.Mgr
                 skill.OnUpdate(delta);
             }
         }
+
+        // 根据服务端传过来的技能id找到技能并返回
+        public Skill GetSkill(int skillId)
+        {
+            return Skills.FirstOrDefault(skill => skill.Define.ID == skillId);
+        }
     }
 }

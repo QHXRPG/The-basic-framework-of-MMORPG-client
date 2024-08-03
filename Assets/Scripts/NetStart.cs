@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Assets.Scripts.u3d_scripts;
 using GameClient.Mgr;
 using GameClient.Entities;
+using GameClient;
 
 
 public class NetStart : MonoBehaviour
@@ -48,6 +49,7 @@ public class NetStart : MonoBehaviour
         MessageRouter.Instance.Subscribe<SpaceEntitySyncResponse>(_SpaceEntitySyncResponse);
         MessageRouter.Instance.Subscribe<HeartBeatResponse>(_HeartBeatResponse);
         MessageRouter.Instance.Subscribe<SpaceCharaterLeaveResponse>(_SpaceCharaterLeaveResponse);
+        MessageRouter.Instance.Subscribe<SpellResponse>(_SpellResponse);
 
         // 心跳包任务，每秒一次
         StartCoroutine(SendHeartMessage());
@@ -58,6 +60,21 @@ public class NetStart : MonoBehaviour
 
         // 注册当前类中 加入游戏 的事件， 函数为 EnterGame
         QHXRPG.Event.RegisterIn("EnterGame", this, "EnterGame");
+    }
+
+    // 收到来自服务器的施法通知
+    private void _SpellResponse(Connection sender, SpellResponse msg)
+    {
+        foreach(CastInfo item in msg.CastList)
+        {
+            var caster = Game.GetUnit(item.CasterId);
+            var skill = caster.SkillMgr.GetSkill(item.SkillId);
+            if (skill.IsUnitTarget)
+            {
+                var target = Game.GetUnit(item.TargetId);
+                skill.Use(new SCEntity(target));
+            }
+        }
     }
 
     //有角色离开地图
@@ -78,12 +95,11 @@ public class NetStart : MonoBehaviour
             if (ms <= 0) ms = 1;
             PingText.text = $"Ping:{ms}ms";
         });
-
     }
-
 
     private HeartBeatRequest beatRequest = new HeartBeatRequest();
     DateTime lastBeatTime = DateTime.MinValue;  
+
     // 向服务器发送心跳
     IEnumerator SendHeartMessage()
     {
