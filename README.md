@@ -1,5 +1,5 @@
 # MMO QHXGame Demo
-
+下载客户端转至：https://github.com/QHXRPG/MMOSERVER-AliCloud/tree/main 
 本项目实现了游戏服务端的大部分基础功能，并在此基础上设计了一个多人联机小游戏。目前该游戏只是一个demo，并没有什么玩法，以下是关于这个demo的一些介绍：
 
 ## 同步类型
